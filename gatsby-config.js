@@ -1,11 +1,19 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Backbreeze CSS utility Library`,
+    description: `Backbreeze is a Tailwind CSS inspired CSS utility library based on Sass`,
+    author: `@n_cusan`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
