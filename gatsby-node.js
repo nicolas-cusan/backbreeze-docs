@@ -21,7 +21,7 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const docsData = await sassdoc
-    .parse("./backbreeze/src", { verbose: true })
+    .parse("./node_modules/backbreeze/src/props", { verbose: true })
     .then(data => {
       const newData = data.reduce((acc, item, idx) => {
         const name = item.file.name

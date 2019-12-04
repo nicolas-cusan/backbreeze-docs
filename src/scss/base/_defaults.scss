@@ -1,0 +1,14 @@
+// ============================================
+// Defaults
+// ============================================
+
+body {
+  font-family: $ff;
+  font-size: $fs;
+  line-height: $lh;
+}
+
+pre,
+code {
+  font-family: $ff-mono;
+}

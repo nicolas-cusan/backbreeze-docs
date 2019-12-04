@@ -8,8 +8,6 @@ import Layout from "components/layout"
 const DocPage = ({ data }) => {
   const content = data.allDocPage.edges[0].node
 
-  console.log(content)
-
   return (
     <Layout>
       {/* <SEO title="Home" /> */}

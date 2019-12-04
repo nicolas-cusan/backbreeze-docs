@@ -1,0 +1,15 @@
+// ============================================
+// Main Styles
+// ============================================
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500,700&display=swap");
+
+// Customize backbreeze
+@import "lib/vars";
+
+// Base
+@import "base/defaults";
+
+// Import Backbreeze
+@import "backbreeze/src/bb";
