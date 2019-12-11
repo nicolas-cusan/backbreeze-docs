@@ -1,0 +1,35 @@
+import SEO from 'components/seo'
+
+<SEO title="Installation" />
+
+# Installation
+
+Backbreeze is distributed via [npm](https://www.npmjs.com/).
+
+```bash
+$ npm install backbreeze
+```
+
+Alternatively you can clone the git repository.
+
+```bash
+$ git clone https://github.com/nicolas-cusan/backbreeze.git
+$ cd backbreeze
+$ rm -rf .git
+```
+
+## Include in your proyect
+
+Include Backbreeze in your main SCSS/Sass file. It is recommended that you add it as the last import to allow Backbreeze utility classes to overwrite other styles.
+
+```scss
+// main.scss
+
+// Include a file with your custom variables to ovewrite Backbreeze defaults
+@include 'custom-vars';
+
+// All other includes
+
+// Include Backbreeze
+@include 'node_modules/backbreeze';
+```

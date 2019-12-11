@@ -1,0 +1,233 @@
+import SEO from 'components/seo'
+
+<SEO title="Configuration" />
+
+# Configuration
+
+Backbreeze exposes three kind of variables to customize: general, property-driven and internal.
+
+## General variables
+
+General variables are used to define values for multiple properties. It is highly recommended that you customize these for every project.
+
+### `$bb-prefix`
+
+Type `<String>`. Prefix to use in generated class names, it defaults to an empty string, that means all classes are unprefixd by default. In case you want to use Backbreeze with another library or just want to make clear what classes are utility classes you can set a prefix that will be used for every generated class.
+
+Default value:
+
+```scss
+$bb-prefix: '' !default;
+```
+
+Example setting `$bb-prefix: 'bb-';` will make all classes look like this: `.bb-<REST OF THE CLASS>` (`.-bb-<REST OF THE CLASS>`) for negative classes.
+
+### `$bb-bps`
+
+Map of breakpoints. The keys will be used in the responsive class names. Used in: all classes that are responsive.
+
+Default value:
+
+```scss
+$bb-bps: (
+  'xs': 416px,
+  'sm': 756px,
+  'md': 1024px,
+  'lg': 1220px,
+  'xl': 1460px,
+) !default;
+```
+
+### `$bb-spacing`
+
+Defines spacing. Used in: `padding`, `margin`, `width`, `max-width`, `min-width`, `height`, `max-width`, `min-width`, `top`, `left`, `right`, `bottom`, `column-gap`, `flex-basis`.
+
+Default value;
+
+```scss
+$bb-spacing: (
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  '': 26px,
+) !default;
+```
+
+### `$bb-colors`
+
+Defines colors. Used in: `background-color`, `border-color`, `color`, `outline-color`
+
+Default value:
+
+```scss
+$bb-colors: (
+  'white': '#fff',
+  'black': '#000',
+) !default;
+```
+
+## Property-driven variables
+
+Each CSS property class has two configuration variables, one that holds the property's values, and one that holds configuration for that property (e.g. the name, the breakpoints, pseudo states), both variables are Sass maps.
+
+All variables have the same pattern:
+
+<!-- prettier-ignore-start -->
+```scss
+$bb-<PROPERTYNAME>-values: (
+  /* values */
+);
+
+$bb-<PROPERTYNAME>-config: (
+  /* configuration */
+);
+```
+<!-- prettier-ignore-end -->
+
+Example:
+
+<!-- prettier-ignore-start -->
+```scss
+$bb-text-align-values: (
+  /* values */
+);
+
+$bb-text-align-config: (
+  /* configuration */
+);
+```
+<!-- prettier-ignore-end -->
+
+### Values
+
+The values variable follow a simple key value pattern where the key will be the name for the value that is used in the resulting utility class:
+
+```scss
+$bb-text-align-values: (
+  'c': center,
+);
+
+// will yield:
+
+.ta-c {
+  text-align: center;
+}
+```
+
+If the variable is false or the map is empty no classes will be generated.
+
+#### NOTE: Using special characters in map keys
+
+To have nice classes some of the default values use characters that need to be escaped in the generated CSS e.g.:
+
+```html
+<div class="lh-1.5">
+  <!-- ... -->
+</div>
+```
+
+```css
+.lh-1\.5 {
+  line-height: 1.5;
+}
+```
+
+To use special characters as Sass Map keys they need to be escaped with `\\` or Sass will throw an error.
+
+<!-- prettier-ignore-start -->
+```scss
+$bb-line-height-values: (
+  '1\\.4': 1.4, // <= Key is escaped because of the `.`
+  '2': 2, // <= No need to escape here,
+);
+```
+<!-- prettier-ignore-end -->
+
+### Configuration
+
+The configuration map has three mandatory keys:
+
+- `'name'`: `<String>` Defines the generated class name
+- `'prop'`: `<String>` CSS property used
+- `'values'`: `<Map>` Values used, **this should be the corresponding values variable**
+
+Optional keys:
+
+- `'bps'`: `<Map>` If set this will generate a responsive utility classes. Typically this will be set to `$bb-bps`
+- `'pseudo'`: `<Map>` If set this will generate pseudo selector utility classes. Typically this will be set to `$bb-pseudo`
+
+## Internal variables
+
+There are some internal variables that should need no customization. Anyhow this is the list:
+
+### `$bb-directional-properties`
+
+Type `<List>`. List of CSS properties that have directional values (e.g. padding-left, margin-bottom).
+
+Default value:
+
+```scss
+$bb-directional-properties: (
+  'padding',
+  'margin',
+  'border',
+  'border-width',
+  'border-style',
+  'border-color',
+  'border-radius'
+) !default;
+```
+
+### `$bb-negative-properties`
+
+Type `<List>`. All values for the properties in this list will have a corresponding negative value (and corresponding class name) generated automatically.
+
+Default value:
+
+```scss
+$bb-negative-properties: ('margin', 'top', 'left', 'bottom', 'right') !default;
+```
+
+Negative classes are prefixed by a dash:
+
+```css
+.-top-10 {
+  top: -10px;
+}
+```
+
+### `$bb-pseudo`
+
+Type `<List>`. Pseudo classes to generate for a given property.
+
+Default value:
+
+```scss
+$bb-pseudo: ('hover', 'focus', 'active', 'group-hover') !default;
+```
+
+Group hover is used to allow for nested elements that respond to hover interaction with its parent `.group` element:
+
+```html
+<a class="group">
+  <h3 class="c-primary:group-hover">
+    Hovering the group will update the h3 text
+  </a>
+</a>
+```
+
+### `$bb-overflow`
+
+Type `<List>`. Overflow values used for the properties `overflow`, `overflow-x`, `overflow-y`.
+
+Default value:
+
+```scss
+$bb-overflow: (
+  'hidden': hidden,
+  'visible': visible,
+  'scroll': scroll,
+  'auto': auto,
+) !default;
+```

@@ -1,0 +1,149 @@
+import SEO from 'components/seo'
+
+<SEO title="Usage" />
+
+# Usage
+
+## Configuring your project
+
+Due to the way variables in Sass work you need to overwrite any variable you want change by including it **before** including Backbreeze. It is recommended that you create a main sass file and include all other files in it. In that file include a `_vars.scss` file that holds your custom variables (this can be any variables not only Backbreeze customizations).
+
+```scss
+// main.scss
+
+// Include a file with your custom variables to ovewrite Backbreeze defaults
+@include 'vars';
+
+// All other includes
+@include 'node_modules/destyle.css';
+@include 'my-include';
+@include 'my-other-include';
+
+// Include Backbreeze last
+// The path might vary depending on your setup
+@include 'node_modules/backbreeze';
+```
+
+Inside your variables file it is recommended that you always customize the following general variables to personalize your project:
+
+```scss
+$bb-bps: (/* ... */);
+$bb-spacing: (/* ... */);
+$bb-colors: (/* ... */);
+
+$bb-font-size-values: (/* ... */);
+$bb-line-height-values: (/* ... */);
+```
+
+## Reset stylesheet
+
+It is recommended to use a reset style sheet of some kind, that can be [normalize.css](https://necolas.github.io/normalize.css/) oder (shameless plug ahead) [destyle.css](https://nicolas-cusan.github.io/destyle.css/) which is well suited to style everything with classes as it removes all browser default styles, this way classes are only _additive_ and do not have to be used to remove styles
+
+## The class names
+
+Backbreeze uses some conventions about the class names it generates. In general class names try to be short but not to clever to make guessing a class name easy. If there is a conflict with two names the more (likely) frequently used one will have a shorter name.
+
+Pattern:
+
+```
+.[-][<PREFIX>-]<PROPERTY NAME>-<VALUE>[:<PSEUDO>][@<BREAKPOINT>]
+```
+
+Pattern break down:
+
+- `[-]` Classes with negative values start with a `-` (dash).
+- `[<PREFIX>-]` Prefix or namespace to distinguish Backbreeze classes from others, set via `$bb-prefix`. By default there is no prefix set.
+- `<PROPERTY NAME>` Name of the property the class is setting. If it is a frequent property the name will likely be short e.g. a single letter, if it is a more infrequent property the name will likely be longer.
+- `<VALUE>` Property value set via the key in the values variable for this utility.
+- `[:<PSEUDO>]` Activation of the property on this pseudo selector e.g. `:hover`, `:focus`.
+- `[@<BREAKPOINT>]` Breakpoint on which to apply this class e.g. `@sm`: from `sm` screens upwards
+
+Example (without prefix)
+
+```html
+<div class="p-20 p-40@sm -mb-30">
+  <h2 class="fs-20 lh-1.2">
+    <a class="c-primary:hover@md" href="#">
+      John Smith
+    </a>
+  </h2>
+</div>
+```
+
+## Negative values
+
+Negative values are generated automatically for CSS properties to whom it is useful by default. These properties are defined in the internal variable `$bb-negative-properties`. So adding a positive value will also generate a negative counterpart:
+
+```scss
+$bb-top-values: (
+  '10': 10px,
+);
+```
+
+Will yield
+
+```css
+.top-10 {
+  top: 10px;
+}
+
+.-top-10 {
+  top: -10px;
+}
+```
+
+Negative values / classes can also be created by prefixing value keys in property-driven variables with a dash (`-`). This pattern does not make the value automatically negative you have to take of that yourself. This feature is useful for use with more complicated values like transforms.
+
+```scss
+$bb-transform-values: (
+  '-50\\%': translate(-50%, -50%),
+);
+```
+
+Will yield
+
+```css
+.-tf-50\% {
+  transform: translate(-50%, -50%);
+}
+```
+
+## Customizing
+
+## Using Backbreeze variables in your code
+
+As everything is just Sass you can use all variables via the regular sass mechanisms:
+
+```scss
+// Using some color in a module
+.my-module {
+  color: map-get($bb-color, 'primary');
+}
+```
+
+NOTE: for the above to work `$bb-colors` needs to be defined before its usage. This means that you need to include (and likely customize) it in your projects variables.
+
+You can also use your own variables to define Backbreeze values:
+
+```scss
+$primary: #4a90e2;
+
+// Use color in Backbreeze classes
+$bb-color: (
+  'primary': $primary,
+);
+
+// Use color in a module
+.my-module {
+  color: $primary;
+}
+```
+
+### Using default values
+
+Some
+
+- customization
+- reposnsive
+- multi class utility classes
+- Abstract vs. concrete (use values like 'large': 40px, vs. '20': 20px,)
