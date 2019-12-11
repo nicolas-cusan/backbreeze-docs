@@ -21,7 +21,7 @@ Due to the way variables in Sass work you need to overwrite any variable you wan
 
 // Include Backbreeze last
 // The path might vary depending on your setup
-@include 'node_modules/backbreeze';
+@include 'node_modules/backbreeze/src/';
 ```
 
 Inside your variables file it is recommended that you always customize the following general variables to personalize your project:
@@ -120,8 +120,6 @@ As everything is just Sass you can use all variables via the regular sass mechan
   color: map-get($bb-color, 'primary');
 }
 ```
-
-NOTE: for the above to work `$bb-colors` needs to be defined before its usage. This means that you need to include (and likely customize) it in your projects variables.
 
 You can also use your own variables to define Backbreeze values:
 
