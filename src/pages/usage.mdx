@@ -13,6 +13,8 @@ Due to the way variables in Sass work you need to overwrite any variable you wan
 
 // Include a file with your custom variables to ovewrite Backbreeze defaults
 @include 'vars';
+@include 'node_modules/backbreeze/src/config';
+@include 'node_modules/backbreeze/src/mixins';
 
 // All other includes
 @include 'node_modules/destyle.css';
@@ -21,7 +23,7 @@ Due to the way variables in Sass work you need to overwrite any variable you wan
 
 // Include Backbreeze last
 // The path might vary depending on your setup
-@include 'node_modules/backbreeze/src/';
+@include 'node_modules/backbreeze/src/utilities';
 ```
 
 Inside your variables file it is recommended that you always customize the following general variables to personalize your project:
