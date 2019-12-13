@@ -3,6 +3,23 @@ module.exports = {
     title: `Backbreeze CSS utility Library`,
     description: `Backbreeze is a Tailwind CSS inspired CSS utility library based on Sass`,
     author: `@n_cusan`,
+    pages: [
+      {
+        name: 'Installation',
+        link: '/installation',
+        id: 1,
+      },
+      {
+        name: 'Configuration',
+        link: '/configuration',
+        id: 2,
+      },
+      {
+        name: 'Usage',
+        link: '/usage',
+        id: 3,
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

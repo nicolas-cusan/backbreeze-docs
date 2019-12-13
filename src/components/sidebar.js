@@ -1,28 +1,48 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 export default () => (
   <StaticQuery
     query={graphql`
       query NavQuery {
-        allSitePage(
-          filter: {
-            isCreatedByStatefulCreatePages: { eq: true }
-            # path: { regex: "/(?!.*404*)/" }
+        site {
+          siteMetadata {
+            pages {
+              name
+              link
+            }
           }
-        ) {
+        }
+        allDocPage {
           edges {
             node {
-              id
-              path
-              isCreatedByStatefulCreatePages
+              name
+              group
             }
           }
         }
       }
     `}
     render={data => {
-      console.log(data)
-      return <nav>Hey</nav>
+      let {
+        site: {
+          siteMetadata: { pages },
+        },
+        allDocPage: { edges: docs },
+      } = data
+
+      // docs = docs.map(item => item.node).reduce((acc, item) => (), [])
+
+      return (
+        <nav>
+          <ul>
+            {pages.map(item => (
+              <li className="" key={item.id}>
+                <Link to={item.link}>{item.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
     }}
   />
 )
