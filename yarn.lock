@@ -2133,7 +2133,7 @@ babylon@^6.18.0:
 
 "backbreeze@https://github.com/nicolas-cusan/backbreeze.git":
   version "1.0.0"
-  resolved "https://github.com/nicolas-cusan/backbreeze.git#32455bb43131fcd95d4100dc0be19ccdefaf1c3a"
+  resolved "https://github.com/nicolas-cusan/backbreeze.git#9ee89233b9f25c2c71b87d35fc4af92092e37fca"
 
 backo2@1.0.2:
   version "1.0.2"

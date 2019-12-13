@@ -5,12 +5,50 @@
 // Spacing
 // ============================================
 
-$space: 28px;
+$space: 30px;
 
 // Fonts
 // ============================================
 
-$fs: 18px;
+$fs: 16px;
 $lh: ($space / $fs);
-$ff: "Rubik", "Helvetica Neue", Arial, Helvetica, sans-serif;
+$ff: 'Rubik', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 $ff-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+
+// BB Configuration
+// ============================================
+
+$bb-spacing: (
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  's': $space,
+);
+
+$bb-colors: (
+  'white': #fff,
+  'black': #000,
+  'primary': #2081c3,
+);
+
+$bb-font-size-values: (
+  '': $fs,
+);
+
+$bb-font-family-values: (
+  '': $ff,
+  'mono': $ff-mono,
+);
+
+$bb-line-height-values: (
+  '': $lh,
+  '1': 1,
+  '1\\.1': 1.1,
+  '1\\.15': 1.15,
+  '1\\.2': 1.2,
+  '1\\.25': 1.25,
+  '1\\.3': 1.3,
+  '1\\.35': 1.35,
+  '1\\.4': 1.4,
+);

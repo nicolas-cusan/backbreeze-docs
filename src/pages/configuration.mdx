@@ -4,7 +4,11 @@ import SEO from 'components/seo'
 
 # Configuration
 
-Backbreeze exposes three kind of variables to customize: general, property-driven and internal.
+Backbreeze is configured via Sass variables. It exposes three kind of variables to customize:
+
+- General
+- Property-driven
+- Internal
 
 ## General variables
 
@@ -116,6 +120,31 @@ $bb-text-align-values: (
 ```
 
 If the variable is false or the map is empty no classes will be generated.
+
+#### NOTE: Empty map keys
+
+Using an empty map key will result in a class without a value reference.
+
+```scss
+$main-font-size: 18px;
+
+$bb-font-size-values: (
+  '': $main-font-size,
+  'lg': 22px,
+);
+```
+
+Will yield:
+
+```css
+.fs {
+  font-size: 18px;
+}
+
+.fs-lg {
+  font-size: 22px;
+}
+```
 
 #### NOTE: Using special characters in map keys
 
@@ -230,4 +259,30 @@ $bb-overflow: (
   'scroll': scroll,
   'auto': auto,
 ) !default;
+```
+
+## Recommended configuration
+
+The following variables will are the most likely to be customized for every project that uses Backbreeze:
+
+```scss
+// _vars.scss
+
+// Breakpoints
+$bb-bps: (/* ... */);
+
+// Spacing
+$bb-spacing: (/* ... */);
+
+// Colors
+$bb-colors: (/* ... */);
+
+// Font Family
+$bb-font-family-values: (/* ... */);
+
+// Font Sizes
+$bb-font-size-values: (/* ... */);
+
+// Line height
+$bb-line-height-values: (/* ... */);
 ```
