@@ -7,17 +7,17 @@ module.exports = {
       {
         name: 'Installation',
         link: '/installation',
-        id: 1,
+        id: 'page-1',
       },
       {
         name: 'Configuration',
         link: '/configuration',
-        id: 2,
+        id: 'page-2',
       },
       {
         name: 'Usage',
         link: '/usage',
-        id: 3,
+        id: 'page-3',
       },
     ],
   },

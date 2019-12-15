@@ -1,13 +1,13 @@
-const sassdoc = require("sassdoc")
-const path = require("path")
-const unified = require("unified")
-const parse = require("remark-parse")
-const html = require("remark-html")
+const sassdoc = require('sassdoc')
+const path = require('path')
+const unified = require('unified')
+const parse = require('remark-parse')
+const html = require('remark-html')
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: ["node_modules", path.resolve(__dirname, "src")],
+      modules: ['node_modules', path.resolve(__dirname, 'src')],
     },
   })
 }
@@ -21,9 +21,9 @@ exports.sourceNodes = async ({
   const { createNode } = actions
 
   const docsData = await sassdoc
-    .parse("./node_modules/backbreeze/src/props", { verbose: true })
+    .parse('./node_modules/backbreeze/src/props', { verbose: true })
     .then(data => {
-      const newData = data.reduce((acc, item, idx) => {
+      const newData = data.reduce((acc, item) => {
         const name = item.file.name
 
         if (name in acc) {
@@ -40,7 +40,7 @@ exports.sourceNodes = async ({
 
   Object.keys(docsData).forEach(key => {
     const data = docsData[key]
-    const fileName = key.replace(/_/, "").replace(".scss", "")
+    const fileName = key.replace(/_/, '').replace('.scss', '')
     data.forEach(item => {
       item.rendered = unified()
         .use(parse)
@@ -93,7 +93,7 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.allDocPage.edges.forEach(({ node }) => {
       createPage({
         path: node.name,
-        component: path.resolve("./src/templates/doc.js"),
+        component: path.resolve('./src/templates/doc.js'),
         context: {
           slug: node.name,
         },

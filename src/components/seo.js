@@ -31,8 +31,6 @@ function SEO({ description, lang, meta, title }) {
     <Helmet
       htmlAttributes={{
         lang,
-      }}
-      bodyAttributes={{
         class: 'ff fs lh',
       }}
       title={title}

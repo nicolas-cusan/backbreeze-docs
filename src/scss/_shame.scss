@@ -1,0 +1,14 @@
+// ============================================
+// Shame file
+// ============================================
+
+// Add height and layout to gatsby generated elements
+
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+#gatsby-focus-wrapper {
+  display: flex;
+}

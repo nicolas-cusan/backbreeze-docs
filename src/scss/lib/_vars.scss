@@ -23,7 +23,18 @@ $bb-spacing: (
   '2': 2px,
   '3': 3px,
   '4': 4px,
-  's': $space,
+  '50': 50px,
+  '60': 60px,
+  'x\\.25': $space * 0.25,
+  'x\\.5': $space * 0.5,
+  'x\\.75': $space * 0.75,
+  'x1': $space,
+  'x1\\.25': $space + $space * 0.25,
+  'x1\\.5': $space + $space * 0.5,
+  'x1\\.75': $space + $space * 0.75,
+  '100\\%': 100%,
+  'full': calc(100vh - 40px),
+  '220': 220px,
 );
 
 $bb-colors: (

@@ -1,16 +1,16 @@
-import React, { Fragment } from "react"
-import { Link, graphql } from "gatsby"
+import React, { Fragment } from 'react'
+import { Link, graphql } from 'gatsby'
 
-import Layout from "components/layout"
+import Layout from 'components/layout'
 // import Image from "components/image"
-// import SEO from "components/seo"
+import SEO from 'components/seo'
 
 const DocPage = ({ data }) => {
   const content = data.allDocPage.edges[0].node
 
   return (
     <Layout>
-      {/* <SEO title="Home" /> */}
+      <SEO title={content.name} />
       <h1>{content.name}</h1>
       <p>{content.group}</p>
 
