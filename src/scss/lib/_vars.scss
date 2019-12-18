@@ -5,15 +5,27 @@
 // Spacing
 // ============================================
 
-$space: 30px;
+$space: 28px;
 
 // Fonts
 // ============================================
 
 $fs: 16px;
 $lh: ($space / $fs);
-$ff: 'Rubik', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+$ff: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+  Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 $ff-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+
+// Colors
+// ============================================
+
+$primary: #1c64a0;
+$accent: #f8c326;
+$accent-light: rgba($accent, 0.12);
+$accent-dark: #a07e18;
+$gray-powder: #fafafa;
+$gray-dust: #f2f2f2;
+$color-txt: #222;
 
 // BB Configuration
 // ============================================
@@ -23,8 +35,6 @@ $bb-spacing: (
   '2': 2px,
   '3': 3px,
   '4': 4px,
-  '50': 50px,
-  '60': 60px,
   'x\\.25': $space * 0.25,
   'x\\.5': $space * 0.5,
   'x\\.75': $space * 0.75,
@@ -32,18 +42,41 @@ $bb-spacing: (
   'x1\\.25': $space + $space * 0.25,
   'x1\\.5': $space + $space * 0.5,
   'x1\\.75': $space + $space * 0.75,
+  'x2': $space * 2,
   '100\\%': 100%,
   'full': calc(100vh - 40px),
+  '50': 50px,
+  '60': 60px,
   '220': 220px,
+  '320': 320px,
+  '700': 700px,
 );
 
 $bb-colors: (
+  'transparent': transparent,
   'white': #fff,
   'black': #000,
-  'primary': #2081c3,
+  'txt': $color-txt,
+  'powder': $gray-powder,
+  'dust': $gray-dust,
+  'primary': $primary,
+  'accent': $accent,
+  'accentLight': $accent-light,
+  'accentDark': $accent-dark,
+);
+
+$bb-border-width-values: (
+  '0': 0,
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
 );
 
 $bb-font-size-values: (
+  '34': 34px,
+  '22': 22px,
+  '14': 14px,
   '': $fs,
 );
 

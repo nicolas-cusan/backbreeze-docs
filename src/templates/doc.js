@@ -1,18 +1,18 @@
-import React, { Fragment } from 'react'
-import { Link, graphql } from 'gatsby'
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import Layout from 'components/layout'
+import Layout from 'components/layout';
 // import Image from "components/image"
-import SEO from 'components/seo'
+import SEO from 'components/seo';
 
 const DocPage = ({ data }) => {
-  const content = data.allDocPage.edges[0].node
+  const content = data.allDocPage.edges[0].node;
 
   return (
     <Layout>
       <SEO title={content.name} />
-      <h1>{content.name}</h1>
-      <p>{content.group}</p>
+      <h1 className="fs-34 lh-1.2 mb-x.25">{content.name}</h1>
+      <p className="fs-22 lh-1.3 o-0.5">{content.group}</p>
 
       {content.data &&
         content.data.map((item, idx) => (
@@ -22,8 +22,8 @@ const DocPage = ({ data }) => {
           </div>
         ))}
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query($slug: String!) {
@@ -49,6 +49,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default DocPage
+export default DocPage;

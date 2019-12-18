@@ -1,14 +1,19 @@
-import SEO from 'components/seo'
+import MdxLayout from 'components/mdx-layout';
 
-<SEO title="Configuration" />
-
-# Configuration
+export default ({ children }) => (
+  <MdxLayout
+    title="Configuration"
+    subline="Create your own style system via configuration."
+  >
+    {children}
+  </MdxLayout>
+);
 
 Backbreeze is configured via Sass variables. It exposes three kind of variables to customize:
 
-- General
-- Property-driven
-- Internal
+- **General**
+- **Property-driven**
+- **Internal**
 
 ## General variables
 
@@ -60,7 +65,7 @@ $bb-spacing: (
 
 ### `$bb-colors`
 
-Defines colors. Used in: `background-color`, `border-color`, `color`, `outline-color`
+Defines colors. Used in: `background-color`, `border-color`, `color`, `outline-color`, `fill`, `stroke`
 
 Default value:
 
@@ -73,7 +78,7 @@ $bb-colors: (
 
 ## Property-driven variables
 
-Each CSS property class has two configuration variables, one that holds the property's values, and one that holds configuration for that property (e.g. the name, the breakpoints, pseudo states), both variables are Sass maps.
+Each CSS property class has two configuration variables, one that holds the property's **values**, and one that holds **configuration** for that property (e.g. the name, the breakpoints, pseudo states), both variables are Sass maps.
 
 All variables have the same pattern:
 

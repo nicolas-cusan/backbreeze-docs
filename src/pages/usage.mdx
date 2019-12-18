@@ -1,8 +1,10 @@
-import SEO from 'components/seo'
+import MdxLayout from 'components/mdx-layout';
 
-<SEO title="Usage" />
-
-# Usage
+export default ({ children }) => (
+  <MdxLayout title="Usage" subline="Using Backbreeze classes in your project.">
+    {children}
+  </MdxLayout>
+);
 
 ## Reset stylesheet
 
@@ -95,7 +97,7 @@ $primary: #4a90e2;
 // Use color in Backbreeze classes
 $bb-color-values: (
   'primary': $primary,
-  // ...,,,,,,,,,,,,
+  // ...,,,,,,,,,,,,,,,,
 );
 
 // Use color in a module
@@ -108,6 +110,8 @@ $bb-color-values: (
 
 Some
 
+- mobile first (styles need to be build from mobile upwards)
+- Pittfalls: order of configuration == order of class creation
 - customization
 - combine clases to create styles
 - reposnsive

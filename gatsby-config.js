@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Backbreeze CSS utility Library`,
-    description: `Backbreeze is a Tailwind CSS inspired CSS utility library based on Sass`,
+    title: `Backbreeze CSS`,
+    description: `Backbreeze is a Tailwind CSS inspired CSS utility library written in Sass`,
     author: `@n_cusan`,
     pages: [
       {
@@ -24,6 +24,17 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-svgr',
+      // options: {
+      //   prettier: true,         // use prettier to format JS code output (default)
+      //   svgo: true,             // use svgo to optimize SVGs (default)
+      //   svgoConfig: {
+      //     removeViewBox: true, // remove viewBox when possible (default)
+      //     cleanupIDs: true,    // remove unused IDs and minify remaining IDs (default)
+      //   },
+      // },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -71,4 +82,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

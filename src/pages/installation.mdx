@@ -1,10 +1,13 @@
-import SEO from 'components/seo'
+import MdxLayout from 'components/mdx-layout';
 
-<SEO title="Installation" />
-
-# Installation
-
-## Using Backbreeze in your Sass project.
+export default ({ children }) => (
+  <MdxLayout
+    title="Installation"
+    subline="Using Backbreeze in your Sass project."
+  >
+    {children}
+  </MdxLayout>
+);
 
 There are multiple ways to use Sass, this guide assumes that you have a running Sass setup. All Testing for this library is done using [`node-sass`](https://github.com/sass/node-sass).
 
