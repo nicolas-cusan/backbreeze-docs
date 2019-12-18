@@ -19,6 +19,8 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          version
+          github
         }
       }
     }
@@ -26,7 +28,11 @@ const Layout = ({ children }) => {
 
   return (
     <div className="minh-full d-flx flxd-col">
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        version={data.site.siteMetadata.version}
+        github={data.site.siteMetadata.github}
+      />
       <Sidebar />
 
       <main className="pl-220@sm pl-320@md pt-60">

@@ -1,5 +1,16 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
+
+const SidebarLink = ({ to, title }) => (
+  <Link
+    className="d-blk px-x.75 py-2 brsl-solid brwt-4 brcl-transparent c-accentDark:hover tsp-color tsd-200"
+    activeClassName="td-underline brcl-accent bgc-accentLight"
+    to={to}
+  >
+    {title}
+  </Link>
+);
+
 export default () => (
   <StaticQuery
     query={graphql`
@@ -51,13 +62,7 @@ export default () => (
           <ul className="mb-x1">
             {pages.map(item => (
               <li className="" key={item.id}>
-                <Link
-                  className="d-blk px-x.75 py-1 brsl-solid brwt-4 brcl-transparent c-accentDark:hover tsp-color tsd-200"
-                  activeClassName="td-underline brcl-accent bgc-accentLight"
-                  to={item.link}
-                >
-                  {item.name}
-                </Link>
+                <SidebarLink to={item.link} title={item.name} />
               </li>
             ))}
           </ul>
@@ -70,13 +75,7 @@ export default () => (
               <ul>
                 {docs[item].map(i => (
                   <li key={i.id}>
-                    <Link
-                      className="d-blk px-x.75 py-1 brsl-solid brwt-4 brcl-transparent c-accentDark:hover"
-                      activeClassName="td-underline brcl-accent bgc-accentLight"
-                      to={`/${i.name}`}
-                    >
-                      {i.name}
-                    </Link>
+                    <SidebarLink to={`/${i.name}`} title={i.name} />
                   </li>
                 ))}
               </ul>

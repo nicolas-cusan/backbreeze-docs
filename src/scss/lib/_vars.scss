@@ -53,6 +53,8 @@ $bb-spacing: (
 );
 
 $bb-colors: (
+  'inherit': inherit,
+  'current': currentColor,
   'transparent': transparent,
   'white': #fff,
   'black': #000,
@@ -83,6 +85,12 @@ $bb-font-size-values: (
 $bb-font-family-values: (
   '': $ff,
   'mono': $ff-mono,
+);
+
+$bb-font-weight-values: (
+  'bold': bold,
+  'normal': normal,
+  '500': 500,
 );
 
 $bb-line-height-values: (
