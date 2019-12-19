@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from 'components/layout';
 import SEO from 'components/seo';
+import Code from 'components/Code';
 
 const DocPage = ({ data }) => {
   const content = data.allDocPage.edges[0].node;
@@ -10,16 +12,24 @@ const DocPage = ({ data }) => {
   return (
     <Layout>
       <SEO title={content.name} />
-      <h1 className="fs-34 lh-1.2 mb-x.25">{content.name}</h1>
-      <p className="fs-22 lh-1.3 o-0.5">{content.group}</p>
+      <h1 className="fs-34 lh-1.2 fw-bold">{content.name}</h1>
+      <p className="fs-22 lh-1.3 o-0.5 pt-x.25">{content.group}</p>
 
-      {content.data &&
-        content.data.map((item, idx) => (
-          <div key={`item-${idx}`}>
-            <div dangerouslySetInnerHTML={{ __html: item.rendered }} />
-            <pre>{`$${item.context.name}: ${item.context.value}`}</pre>
-          </div>
-        ))}
+      <hr className="my-x1.5 o-0.1" />
+
+      {content.data && (
+        <div className="typography">
+          {content.data.map((item, idx) => (
+            <Fragment key={`item-${idx}`}>
+              <div dangerouslySetInnerHTML={{ __html: item.rendered }} />
+              {/* <MDXRenderer>{item.description}</MDXRenderer> */}
+              <Code className="language-scss">
+                {`$${item.context.name}: ${item.context.value}`}
+              </Code>
+            </Fragment>
+          ))}
+        </div>
+      )}
     </Layout>
   );
 };
@@ -33,6 +43,7 @@ export const query = graphql`
           data {
             description
             rendered
+            # mdx
             file {
               name
               path

@@ -10,17 +10,17 @@ module.exports = {
     pages: [
       {
         name: 'Installation',
-        link: '/installation',
+        link: '/installation/',
         id: 'page-1',
       },
       {
         name: 'Configuration',
-        link: '/configuration',
+        link: '/configuration/',
         id: 'page-2',
       },
       {
         name: 'Usage',
-        link: '/usage',
+        link: '/usage/',
         id: 'page-3',
       },
     ],
@@ -28,6 +28,27 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: false,
+        // develop: true,
+        // debug: true,
+        ignore: ['destyle.css/'],
+        whitelist: ['typography'],
+        whitelistPatternsChildren: [/typography$/],
+        extractors: [
+          {
+            extractor: class {
+              static extract(content) {
+                return content.match(/[\w-/:%@.]+(?<!:)/g) || [];
+              }
+            },
+            extensions: ['js', 'ts', 'jsx', 'tsx', 'md', 'mdx'],
+          },
+        ],
+      },
+    },
     {
       resolve: 'gatsby-plugin-svgr',
       // options: {

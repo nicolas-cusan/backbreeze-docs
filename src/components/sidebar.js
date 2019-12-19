@@ -1,12 +1,17 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 
+const isActive = ({ isCurrent }) => {
+  const className =
+    'd-blk px-x.75 py-2 brsl-solid brwt-4 brcl-transparent tsp-color tsd-200';
+  const activeClassName = 'td-underline brcl-accent bgc-accentLight';
+  return isCurrent
+    ? { className: `${className} ${activeClassName}` }
+    : { className: `${className} c-accentDark:hover` };
+};
+
 const SidebarLink = ({ to, title }) => (
-  <Link
-    className="d-blk px-x.75 py-2 brsl-solid brwt-4 brcl-transparent c-accentDark:hover tsp-color tsd-200"
-    activeClassName="td-underline brcl-accent bgc-accentLight"
-    to={to}
-  >
+  <Link getProps={isActive} to={to}>
     {title}
   </Link>
 );
@@ -75,7 +80,7 @@ export default () => (
               <ul>
                 {docs[item].map(i => (
                   <li key={i.id}>
-                    <SidebarLink to={`/${i.name}`} title={i.name} />
+                    <SidebarLink to={`/${i.name}/`} title={i.name} />
                   </li>
                 ))}
               </ul>

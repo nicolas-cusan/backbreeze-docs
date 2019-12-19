@@ -1,16 +1,17 @@
-const sassdoc = require('sassdoc')
-const path = require('path')
-const unified = require('unified')
-const parse = require('remark-parse')
-const html = require('remark-html')
+const sassdoc = require('sassdoc');
+const path = require('path');
+const unified = require('unified');
+const parse = require('remark-parse');
+const html = require('remark-html');
+// const genMdx = require('./gen-mdx');
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: ['node_modules', path.resolve(__dirname, 'src')],
     },
-  })
-}
+  });
+};
 
 // Source data from backbreeze source files
 exports.sourceNodes = async ({
@@ -18,35 +19,38 @@ exports.sourceNodes = async ({
   createNodeId,
   createContentDigest,
 }) => {
-  const { createNode } = actions
+  const { createNode } = actions;
 
   const docsData = await sassdoc
     .parse('./node_modules/backbreeze/src/props', { verbose: true })
     .then(data => {
       const newData = data.reduce((acc, item) => {
-        const name = item.file.name
+        const name = item.file.name;
 
         if (name in acc) {
-          acc[name].push(item)
+          acc[name].push(item);
         } else {
-          acc[name] = []
-          acc[name].push(item)
+          acc[name] = [];
+          acc[name].push(item);
         }
 
-        return acc
-      }, {})
-      return newData
-    })
+        return acc;
+      }, {});
+      return newData;
+    });
 
   Object.keys(docsData).forEach(key => {
-    const data = docsData[key]
-    const fileName = key.replace(/_/, '').replace('.scss', '')
+    const data = docsData[key];
+    const fileName = key.replace(/_/, '').replace('.scss', '');
     data.forEach(item => {
       item.rendered = unified()
         .use(parse)
         .use(html)
-        .processSync(item.description).contents
-    })
+        .processSync(item.description).contents;
+    });
+    // data.forEach(item => {
+    //   item.mdx = genMdx(item.description.trim());
+    // });
 
     const node = {
       id: createNodeId(`doc-${fileName}`),
@@ -57,14 +61,14 @@ exports.sourceNodes = async ({
         type: `DocPage`,
         contentDigest: createContentDigest(data),
       },
-    }
+    };
 
-    createNode(node)
-  })
-}
+    createNode(node);
+  });
+};
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   return graphql(`
     {
       allDocPage(sort: { fields: [name] }) {
@@ -97,7 +101,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: node.name,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
