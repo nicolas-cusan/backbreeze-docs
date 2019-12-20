@@ -1,9 +1,6 @@
 const sassdoc = require('sassdoc');
 const path = require('path');
-const unified = require('unified');
-const parse = require('remark-parse');
-const html = require('remark-html');
-// const genMdx = require('./gen-mdx');
+const genMdx = require('./gen-mdx');
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
@@ -43,14 +40,8 @@ exports.sourceNodes = async ({
     const data = docsData[key];
     const fileName = key.replace(/_/, '').replace('.scss', '');
     data.forEach(item => {
-      item.rendered = unified()
-        .use(parse)
-        .use(html)
-        .processSync(item.description).contents;
+      item.mdx = genMdx(item.description.trim());
     });
-    // data.forEach(item => {
-    //   item.mdx = genMdx(item.description.trim());
-    // });
 
     const node = {
       id: createNodeId(`doc-${fileName}`),

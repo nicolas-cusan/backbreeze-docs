@@ -21,8 +21,7 @@ const DocPage = ({ data }) => {
         <div className="typography">
           {content.data.map((item, idx) => (
             <Fragment key={`item-${idx}`}>
-              <div dangerouslySetInnerHTML={{ __html: item.rendered }} />
-              {/* <MDXRenderer>{item.description}</MDXRenderer> */}
+              <MDXRenderer>{item.mdx}</MDXRenderer>
               <Code className="language-scss">
                 {`$${item.context.name}: ${item.context.value}`}
               </Code>
@@ -41,9 +40,7 @@ export const query = graphql`
         node {
           name
           data {
-            description
-            rendered
-            # mdx
+            mdx
             file {
               name
               path
