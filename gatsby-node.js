@@ -68,7 +68,6 @@ exports.createPages = ({ graphql, actions }) => {
             name
             data {
               description
-              rendered
               file {
                 name
                 path

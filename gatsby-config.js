@@ -87,6 +87,7 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.js'),
         },
+        rehypePlugins: [require('rehype-slug')],
       },
     },
     `gatsby-transformer-sharp`,

@@ -1,3 +1,5 @@
+// Copied and slightly adapted from here: https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-plugin-mdx/utils/gen-mdx.js
+
 const mdx = require('@mdx-js/mdx');
 const babel = require(`@babel/core`);
 

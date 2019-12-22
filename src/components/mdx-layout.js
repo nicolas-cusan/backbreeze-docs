@@ -3,8 +3,10 @@ import SEO from 'components/seo';
 import Layout from 'components/layout';
 import { MDXProvider } from '@mdx-js/react';
 import Code from 'components/Code';
+
 const components = {
   code: Code,
+  pre: props => <div className="pre" {...props} />,
 };
 
 export default ({ title, subline, children }) => (

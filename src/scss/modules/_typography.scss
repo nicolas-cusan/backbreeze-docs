@@ -14,6 +14,7 @@
   ul,
   ol,
   pre,
+  .pre,
   blockquote {
     margin-bottom: $space;
 
@@ -27,6 +28,7 @@
 // ============================================
 
 .typography {
+  .prism-code,
   code {
     font-family: $ff-mono;
     font-size: $fs - 2px;
@@ -35,7 +37,8 @@
     border-radius: 3px;
   }
 
-  pre > code {
+  .prism-code,
+  pre code {
     line-height: 1.4;
     display: block;
     padding: $space * 0.5;
@@ -43,6 +46,7 @@
     background-color: transparent;
   }
 
+  .prism-code,
   pre {
     overflow: auto;
     background-color: $gray-powder;
