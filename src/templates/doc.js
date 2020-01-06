@@ -23,7 +23,7 @@ const DocPage = ({ data }) => {
             <Fragment key={`item-${idx}`}>
               <MDXRenderer>{item.mdx}</MDXRenderer>
               <Code className="language-scss">
-                {`$${item.context.name}: ${item.context.value}`}
+                {`$${item.context.name}: ${item.context.value};`}
               </Code>
             </Fragment>
           ))}

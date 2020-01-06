@@ -23,6 +23,11 @@ module.exports = {
         link: '/usage/',
         id: 'page-3',
       },
+      {
+        name: 'Using in production',
+        link: '/using-in-production/',
+        id: 'page-4',
+      },
     ],
   },
   plugins: [

@@ -1,9 +1,55 @@
 import MdxLayout from 'components/mdx-layout';
 
 export default ({ children }) => (
-  <MdxLayout title="Production" subline="Production">
+  <MdxLayout
+    title="Using in Production"
+    subline="Tips for using Backbreeze in production"
+  >
     {children}
   </MdxLayout>
 );
 
-Production
+## PostCSS plugins
+
+[PostCSS](https://postcss.org/) is a tool to modify CSS with JavaScript. On its own PostCSS does not do much, it works by chaining plugins together that modify CSS code sequentially. To setup PostCSS in your project please refer to the [PostCSS usage documentation](https://github.com/postcss/postcss#usage). To use Backbreeze in production the usage of two plugins is recommended:
+
+### Remove unused CSS with PurgeCSS
+
+Backbreeze generates a large amount of CSS. It is highly likely that any given project will only use a fraction of the generated CSS. To prevent unused CSS to be delivered in production the use of [PurgeCSS](https://www.purgecss.com/) is highly recommended. The [PurgeCSS documentation](https://www.purgecss.com/) has a good overview of how to used it with different build systems.
+
+When using PurgeCSS it is important to configure the `extractors` option properly so classes with special characters used in Backbreeze are handled correctly.
+
+```js
+// In your PurgeCSS configuration
+extractors: [
+  {
+    extractor: class {
+      static extract(content) {
+        return content.match(/[\w-/:%@.]+(?<!:)/g) || [];
+      }
+    },
+    extensions: ['.html', '.js'], // all file the extensions the extractor should be applied to
+  },
+];
+```
+
+If you use other special characters trough configuration you should include them in the regular expression.
+
+#### Use only in production
+
+PurgeCSS takes some time to evaluate all CSS and eliminate the unused parts. Therefor it should not run during development. Make sure yo only use it in production builds.
+
+<!-- @TODO add example -->
+
+### Add vendor prefixing with Autoprefixer
+
+Backbreeze generated CSS does not include vendor prefixes. It is recommended to use [Autoprefixer](https://github.com/postcss/autoprefixer) to ensure CSS compatibility.
+
+## Disabling utilities
+
+To disable utilities set the property variable to `false`:
+
+```scss
+// Disable the text-align utility classes
+$bb-text-align-config: false;
+```
