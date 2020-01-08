@@ -9,14 +9,20 @@ export default ({ children }) => (
   </MdxLayout>
 );
 
-There are multiple ways to use Sass, this guide assumes that you have a running Sass setup. All Testing for this library is done using [`node-sass`](https://github.com/sass/node-sass).
+There are multiple ways to use [Sass](https://sass-lang.com/) and multiple Sass versions. All Testing for this library is done using [`node-sass`](https://github.com/sass/node-sass). There are some recommendations you can find on the [Sass website](https://sass-lang.com/install) on how to install Sass.
+
+A common way to include Sass processing in your project is to use a build tool or task runner like: [Webpack](https://github.com/webpack-contrib/sass-loader), [Gulp](https://www.npmjs.com/package/gulp-sass), [Parcel](https://parceljs.org/scss.html) or just npm scripts.
+
+This guide assumes that you have a running Sass setup and are using a `main.scss` file (name is not relevant) to include all your Sass partials.
+
+NOTE: Backbreeze is not (yet) written using the new [module system](https://sass-lang.com/blog/the-module-system-is-launched) to be more compatible with older codebases. This might change in the future.
 
 ## Installation via NPM
 
 Backbreeze is distributed via [npm](https://www.npmjs.com/).
 
 ```bash
-$ npm install backbreeze
+$ npm install --save backbreeze
 ```
 
 Alternatively you can clone the git repository. And copy the files to some location in your project. This approach is not recommended as you will not have automatic updates and bug fixes.
@@ -34,27 +40,32 @@ $ rm -rf .git
 
 ## Including in your project
 
-Backbreeze provides two Sass partials: `_config.scss` and `_utilities.scss`. Due to the way default variables work in Sass you need to overwrite any Backbreeze variables **before** including the Backbreeze `_config.scss` file. It is recommended to include the `_utilities.scss` partial last to enable overwriting of module styles.
+Backbreeze provides two Sass partials: `_config.scss` and `_utilities.scss`. Due to the way default variables work in Sass you need to overwrite any Backbreeze variables **before** including the Backbreeze `_config.scss` file. It is recommended to include the `_utilities.scss` partial last to enable overwriting of any other styles.
+
+To keep things tidy it is also recomended to have a `_vars.scss` (name is not relevant) partial to hold your Backbreeze configuration (Learn how to configure Backbreeze [here](/configuration)).
 
 ```scss
 // main.scss
 
-// Project variables that to ovewrite Backbreeze default variables
+// Project variables and Backbreeze configuration
 @include 'vars';
 
-// Bachbreeze `_config.scss` (file path might vary depending on your setup)
-@include 'node_modules/backbreeze/src/config';
+// Backbreeze `_config.scss` (file path might vary depending on your setup)
+@include 'path/to/node_modules/backbreeze/src/config';
 
-// All other project includes
-@include 'node_modules/destyle.css';
+// Reset stylesheet
+@include 'path/to/node_modules/destyle.css';
+
+// Custom project styles
 @include 'my-include';
 @include 'my-other-include';
 // ....
 
-// Backbreeze `_utilities.scss` last to overwrite any other styles (file path might vary depending on your setup)
-@include 'node_modules/backbreeze/src/utilities';
+// Backbreeze `_utilities.scss` last to overwrite any other styles
+// (file path might vary depending on your setup)
+@include 'path/to/node_modules/backbreeze/src/utilities';
 ```
 
-## Usage via CDN
+## Other ways to use Backbreeze
 
-Usage via CDN is not recommended as Backbreeze does not provide many default values. In addition Backbreeze generates a lot of classes so file size might be an issue. It is highly recommended to remove unused classes from your code base for production, you can learn more about it here.
+The Backbreeze npm package includes a compiled CSS version of the library with the default values. However as Backbreeze does not provide many default values it is not recommended to use this version. In addition to that Backbreeze generates a lot of classes so file size might be an issue. It is highly recommended to remove unused classes from your code base for production, you can learn more about it [here](/using-in-production).
