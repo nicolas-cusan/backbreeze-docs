@@ -9,18 +9,18 @@ export default ({ children }) => (
   </MdxLayout>
 );
 
-## How to do configuration in Sass
+## Sass `!default` variables
 
 In Sass variables can be flagged as `!default`. That means that if another variable with the same name is defined in the scope of the project the `!default` variable will be overwritten (learn more about it [here](https://sass-lang.com/documentation/variables#default-values)).
 
-Backbreeze provides `!default` configuration variables as its configuration API. Due to the way default variables work in Sass you need to overwrite any Backbreeze variables **before** including the Backbreeze `_config.scss` file (see [instalation](/installation#including-in-your-project)).
-
-To actualy overwrite a default configuarion variable with your own values simply decalre it in your project variables:
+Backbreeze's configuration API is based on this principle. To configure a Backbreeze you need to overwitte it bey creating the a variable with the same name in your project:
 
 ```scss
 // project config
 
-// This declaration will overwritte each instance of the `!default` variable
+// This declaration will overwritte each instance
+// of the `!default` $bb-colors variable
+
 $bb-colors: (
   'white': #fff,
   'black': #000,
@@ -32,9 +32,10 @@ $bb-colors: (
 ```
 
 ```scss
-// bacbreeze config
+// bacbreeze config default
 
 // Default value
+
 $bb-colors: (
   'white': #fff,
   'black': #000,
@@ -42,7 +43,9 @@ $bb-colors: (
 ) !default;
 ```
 
-Configuration variables are categorized the following way:
+Due to the way default variables work in Sass you need to overwrite any Backbreeze variables **before** including the Backbreeze `_config.scss` file (see [installation](/installation#including-in-your-project)).
+
+Backbreeze configuration variables are categorized in:
 
 - **[General](#general-variables)**
 - **[Property-driven](#property-driven-variables)**
@@ -279,7 +282,7 @@ Optional keys:
 
 ## Internal variables
 
-There are some internal variables that should need no customization. Anyhow this is the list:
+Internal variables that should not no customization.
 
 ### `$bb-directional-properties`
 
@@ -377,3 +380,6 @@ $bb-font-size-values: (/* ... */);
 // Line height
 $bb-line-height-values: (/* ... */);
 ```
+
+<!-- @TODO -->
+<!-- - Abstract vs. concrete (use values like 'large': 40px, vs. '20': 20px,) -->

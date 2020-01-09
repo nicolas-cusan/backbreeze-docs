@@ -6,6 +6,33 @@ export default ({ children }) => (
   </MdxLayout>
 );
 
+## Using the Backbreeze classes
+
+Backbreeze provides what is often called utility classes or atomic CSS. That means that it provides classes where each class applies one CSS property and one value for that property. To achieve complex styles what you need to do is combine classes together:
+
+```html
+<div class="c-white p-4 bg-black">
+  <h3 class="fw-bold mb">
+    My title
+  </h3>
+  <p class="o-0.5">
+    Subtitle goes here
+  </p>
+</div>
+```
+
+## Responsive and mobile first
+
+Almost all Backbreeze generated classes are responsive (all can be made responsive via configuration if needed), that means they provide variants to change styles across breakpoints.
+
+```html
+<div class="c-white c-black@sm">
+  This text will be white on mobile and black starting at the breakpoint `sm`
+</div>
+```
+
+All Backbreeze media queries use `(min-width: ...)` exclusively, therefor a regular Backbreeze class style (a class without a `@` screen size modifier) will always be applied unless overwritten by a `@` class for a larger screen size. This approach is called mobile first. Create styles for mobile devices and modify them as needed when the screen gets wider.
+
 ## Reset stylesheet
 
 It is recommended to use a reset style sheet of some kind, that can be [normalize.css](https://necolas.github.io/normalize.css/) or (shameless plug ahead) [destyle.css](https://nicolas-cusan.github.io/destyle.css/) which is well suited to for a utility approach to styling as it removes all browser default styles, this way classes are only _additive_ and do not have to be used to remove styles.
@@ -15,19 +42,19 @@ It is recommended to use a reset style sheet of some kind, that can be [normaliz
 Backbreeze class names are generated using the following pattern:
 
 ```
-.[-][<PREFIX>-]<PROPERTY NAME>-<VALUE>[:<PSEUDO>][@<BREAKPOINT>]
+.[-][<NAMESPACE>-]<PROPERTY NAME>-<VALUE>[:<PSEUDO>][@<BREAKPOINT>]
 ```
 
 Pattern break down:
 
-- `[-]` Classes with negative values start with a `-` (dash).
-- `[<PREFIX>-]` Prefix or namespace to distinguish Backbreeze classes from others, set via `$bb-prefix`. By default there is no prefix set.
-- `<PROPERTY NAME>` Name that describes the property the class is setting. More frequently used properties will have shorter names e.g. a single letter, more infrequently used properties have longer names. In general class names try to be short but not to clever to make guessing a class name easy.
-- `<VALUE>` Property value set via the key in the values variable for this utility.
-- `[:<PSEUDO>]` Activation of the property on this pseudo selector e.g. `:hover`, `:focus`.
-- `[@<BREAKPOINT>]` Breakpoint on which to apply this class e.g. `@sm`: from `sm` screens upwards.
+- `[-]` Classes with negative values start with a `-` (dash)
+- `[<NAMESPACE>-]` Namespace to distinguish Backbreeze classes from others, it is set via [`$bb-namespace`](/configuration#bb-namespace). There is no namespace set by default
+- `<PROPERTY NAME>` Name that describes the property the class is setting. More frequently used properties will have shorter names e.g. a single letter, more infrequently used properties have longer names. In general class names try to be short but not to clever to make guessing a class name easy. e.g. `ta` (for `text-align`)
+- `<VALUE>` Property value set via the key in the values variable for this utility e.g. `center`
+- `[:<PSEUDO>]` Activation of the property on this pseudo selector e.g. `:hover`, `:focus`
+- `[@<BREAKPOINT>]` Breakpoint on which to apply this class e.g. `@sm` (from `sm` screens upwards, set via [`$bb-bps`](/configuration#bb-bps))
 
-Example (without prefix)
+Example (without namespace)
 
 ```html
 <div class="p-20 p-40@sm -mb-30">
@@ -38,6 +65,18 @@ Example (without prefix)
   </h2>
 </div>
 ```
+
+Example breakdown:
+
+- **`<div>`**
+  - `p-20`: add a padding of `20px` all around
+  - `p-40@sm`: change the padding to `40px` from `sm` screens upwards
+  - `-mb-30`: add a negative margin of `30px` on the bottom
+    - **`<h2>`**
+      - `fs-20`: set the the font size to `20px`
+      - `lh-1.2`: set the line height to `1.2`
+        - **`<a>`**
+          - `c-primary:hover@md`: change the color when hovered from `md` screens upwards
 
 ## Using Backbreeze variables in your code
 
@@ -65,17 +104,3 @@ $bb-color-values: (
   color: $primary;
 }
 ```
-
-### Using default values
-
-Some
-
-- mobile first (styles need to be build from mobile upwards)
-- Pittfalls: order of configuration == order of class creation
-- customization
-- combine clases to create styles
-- reposnsive
-- pseudo
-
-- multi class utility classes
-- Abstract vs. concrete (use values like 'large': 40px, vs. '20': 20px,)
