@@ -1,7 +1,10 @@
 import MdxLayout from 'components/mdx-layout';
 
 export default ({ children }) => (
-  <MdxLayout title="Usage" subline="Using Backbreeze classes in your project.">
+  <MdxLayout
+    title="Usage"
+    subline="Applying Backbreeze classes in your project."
+  >
     {children}
   </MdxLayout>
 );
@@ -97,7 +100,8 @@ $primary: #4a90e2;
 // Use color in Backbreeze classes
 $bb-color-values: (
   'primary': $primary,
-  // ...
+  // ...,
+);
 
 // Use color in a module
 .my-module {

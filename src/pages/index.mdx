@@ -17,9 +17,34 @@ export default ({ children }) => (
 - Responsive and mobile first
 - Short class names derived from the CSS property they apply to make _guessing_ class names easy
 
+## What are utility classes?
+
+Utility classes are CSS classes that only apply one CSS property and value. The classname reflects what property and value are applied.
+
+```css
+.ta-center {
+  text-align: center;
+}
+```
+
+Styling is achieved by combining multiple classes in HTML rather then writing, and possibly repeating, CSS.
+
+```html
+<div class="ta-center fs-30 lh-1.2 fw-bold">
+  <!--  -->
+</div>
+```
+
+Backbreeze provides classes for a lot of CSS properties in the spec. So that a lot can be achieved by combining classes. Some benefits of this approach are:
+
+- Fast development
+- Small CSS files (when [processed correctly](/using-in-production#remove-unused-css-with-purgecss))
+- No need to worry about naming things
+- Flexibility to make exceptions / variations of componets any time
+
 ## Why Sass?
 
-[Sass](https://sass-lang.com/) is an industry standard that is widely used. In contrast to combining different PostCSS plugins it has a full language spec that makes it easier to port code between projects and has a superior authoring experience. Still PostCSS is great to process the generated CSS and its used is definitely encouraged when using [Backbreeze in production](/using-in-production).
+[Sass](https://sass-lang.com/) is a widely used industry standard for authoring stylesheets. In contrast to combining different PostCSS plugins it has a [full language spec](https://sass-lang.com/documentation) that provides a solid authoring experience and makes it easy to port code between projects. PostCSS is great to process the generated CSS and its use is encouraged when using [Backbreeze in production](/using-in-production).
 
 ## Inspired by [Tailwind](https://tailwindcss.com/)
 

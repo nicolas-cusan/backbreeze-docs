@@ -67,10 +67,6 @@
     font-weight: bold;
     margin-bottom: $space * 0.5;
 
-    &:not(:first-child) {
-      margin-top: $space * 2;
-    }
-
     code {
       line-height: inherit;
     }
@@ -78,31 +74,40 @@
 
   h1,
   h2 {
-    font-size: 30px;
+    font-size: 28px;
     line-height: 1.2;
 
     &:not(:first-child) {
       padding-top: $space * 0.75;
       border-top: 1px solid rgba($color-txt, 0.1);
+      margin-top: $space * 2;
     }
 
     code {
-      font-size: 28px;
+      font-size: 26px;
     }
   }
 
   h3 {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.2;
 
+    &:not(:first-child) {
+      margin-top: $space * 1.5;
+    }
+
     code {
-      font-size: 22px;
+      font-size: 20px;
     }
   }
 
   h4 {
     font-size: 18px;
     line-height: 1.25;
+
+    &:not(:first-child) {
+      margin-top: $space * 1.5;
+    }
 
     code {
       font-size: 18px;
@@ -113,6 +118,10 @@
     font-size: 18px;
     line-height: 1.35;
     opacity: 0.5;
+
+    &:not(:first-child) {
+      margin-top: $space * 1.5;
+    }
 
     code {
       font-size: 16px;

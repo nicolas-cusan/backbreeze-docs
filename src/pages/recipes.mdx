@@ -1,16 +1,44 @@
 import MdxLayout from 'components/mdx-layout';
 
 export default ({ children }) => (
-  <MdxLayout title="Recipes" subline="Recipes">
+  <MdxLayout title="Recipes" subline="Usefull tips to working with Backbreeze">
     {children}
   </MdxLayout>
 );
 
-Recipes
+## Overwrite a utility class name
 
-- overwrite a class name
-- use custom breakpoints
-- use values from general vars in my code / in combination with custom values
-- print styles
-- Pittfalls: order of configuration == order of class creation
-- multi class utility classes
+To overwrite a classname change the `name` key in the property config variable:
+
+```scss
+// in your project variables file
+
+$bb-text-align-config: (
+  'name': 'text-align',
+  // ...,,,
+);
+```
+
+Will yield:
+
+```css
+.text-align-center {
+  text-align: center:
+}
+```
+
+## Use custom breakpoints for just one utility class
+
+- completely custom
+- merge
+  - max-width
+
+* creating a component
+  - container
+  - button
+* creating a custom utility
+  - eg. animation
+* use values from general vars in my code / in combination with custom values
+* print styles
+* Pittfalls: order of configuration == order of class creation
+* multi class utility classes
