@@ -11,22 +11,32 @@ module.exports = {
       {
         name: 'Installation',
         link: '/installation/',
-        id: 'page-1',
+        id: 'installation',
       },
       {
         name: 'Configuration',
         link: '/configuration/',
-        id: 'page-2',
+        id: 'configuration',
+      },
+      {
+        name: 'Mixins',
+        link: '/mixins/',
+        id: 'mixins',
       },
       {
         name: 'Usage',
         link: '/usage/',
-        id: 'page-3',
+        id: 'usage',
+      },
+      {
+        name: 'Recipes',
+        link: '/recipes/',
+        id: 'recipes',
       },
       {
         name: 'Using in production',
         link: '/using-in-production/',
-        id: 'page-4',
+        id: 'using-in-production',
       },
     ],
   },
@@ -95,6 +105,7 @@ module.exports = {
         rehypePlugins: [require('rehype-slug')],
       },
     },
+    `gatsby-plugin-catch-links`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

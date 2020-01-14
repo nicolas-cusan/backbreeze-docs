@@ -70,6 +70,14 @@
     code {
       line-height: inherit;
     }
+
+    &::before {
+      content: '';
+      height: 80px;
+      margin-top: -80px;
+      display: block;
+      visibility: hidden;
+    }
   }
 
   h1,
@@ -84,7 +92,7 @@
     }
 
     code {
-      font-size: 26px;
+      font-size: 25px;
     }
   }
 
@@ -97,7 +105,7 @@
     }
 
     code {
-      font-size: 20px;
+      font-size: 19px;
     }
   }
 
@@ -110,12 +118,12 @@
     }
 
     code {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
   h5 {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.35;
     opacity: 0.5;
 
@@ -124,7 +132,7 @@
     }
 
     code {
-      font-size: 16px;
+      font-size: 15px;
     }
   }
 }

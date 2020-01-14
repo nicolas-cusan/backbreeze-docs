@@ -217,13 +217,16 @@ To have nice classes some of the default values use characters that need to be e
 }
 ```
 
-To use special characters as Sass Map keys they need to be escaped with `\\` or Sass will throw an error.
+Backbreeze will escape `.`, `/`, and `%` automatically.
+
+Other special characters will need to be escaped using `\\`:
 
 <!-- prettier-ignore-start -->
 ```scss
 $bb-line-height-values: (
-  '1\\.4': 1.4, // <= Key is escaped because of the `.`
-  '2': 2, // <= No need to escape here,
+  '1.4': 1.4, // <= Automatically escaped
+  '2': 2,
+  '1\\*2': 2, // <= `*` needs to be escaped
 );
 ```
 <!-- prettier-ignore-end -->
