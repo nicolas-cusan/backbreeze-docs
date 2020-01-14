@@ -80,7 +80,7 @@ export default () => (
               <ul>
                 {docs[item].map(i => (
                   <li key={i.id}>
-                    <SidebarLink to={`/${i.name}`} title={i.name} />
+                    <SidebarLink to={`/${i.name}/`} title={i.name} />
                   </li>
                 ))}
               </ul>
