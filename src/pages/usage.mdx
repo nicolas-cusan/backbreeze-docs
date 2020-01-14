@@ -51,11 +51,11 @@ Backbreeze class names are generated using the following pattern:
 Pattern break down:
 
 - `[-]` Classes with negative values start with a `-` (dash)
-- `[<NAMESPACE>-]` Namespace to distinguish Backbreeze classes from others, it is set via [`$bb-namespace`](/configuration#bb-namespace). There is no namespace set by default
+- `[<NAMESPACE>-]` Namespace to distinguish Backbreeze classes from others, it is set via [`$bb-namespace`](/configuration/#bb-namespace). There is no namespace set by default
 - `<PROPERTY NAME>` Name that describes the property the class is setting. More frequently used properties will have shorter names e.g. a single letter, more infrequently used properties have longer names. In general class names try to be short but not to clever to make guessing a class name easy. e.g. `ta` (for `text-align`)
 - `<VALUE>` Property value set via the key in the values variable for this utility e.g. `center`
 - `[:<PSEUDO>]` Activation of the property on this pseudo selector e.g. `:hover`, `:focus`
-- `[@<BREAKPOINT>]` Breakpoint on which to apply this class e.g. `@sm` (from `sm` screens upwards, set via [`$bb-bps`](/configuration#bb-bps))
+- `[@<BREAKPOINT>]` Breakpoint on which to apply this class e.g. `@sm` (from `sm` screens upwards, set via [`$bb-bps`](/configuration/#bb-bps))
 
 Example (without namespace)
 
@@ -100,7 +100,7 @@ $primary: #4a90e2;
 // Use color in Backbreeze classes
 $bb-color-values: (
   'primary': $primary,
-  // ...,
+  // ...,,
 );
 
 // Use color in a module

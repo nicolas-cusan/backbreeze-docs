@@ -42,7 +42,7 @@ $ rm -rf .git
 
 Backbreeze provides two Sass partials: `_config.scss` and `_utilities.scss`. Due to the way default variables work in Sass you need to overwrite any Backbreeze variables **before** including the Backbreeze `_config.scss` file. It is recommended to include the `_utilities.scss` partial last to enable overwriting of any other styles.
 
-To keep things tidy it is also recomended to have a `_vars.scss` (name is not relevant) partial to hold your Backbreeze configuration (Learn how to configure Backbreeze [here](/configuration)).
+To keep things tidy it is also recomended to have a `_vars.scss` (name is not relevant) partial to hold your Backbreeze configuration (Learn how to configure Backbreeze [here](/configuration/)).
 
 ```scss
 // main.scss
@@ -68,4 +68,4 @@ To keep things tidy it is also recomended to have a `_vars.scss` (name is not re
 
 ## Other ways to use Backbreeze
 
-The Backbreeze npm package includes a compiled CSS version of the library with the default values. However as Backbreeze does not provide many default values it is not recommended to use this version. In addition to that Backbreeze generates a lot of classes so file size might be an issue. It is highly recommended to remove unused classes from your code base for production, you can learn more about it [here](/using-in-production).
+The Backbreeze npm package includes a compiled CSS version of the library with the default values. However as Backbreeze does not provide many default values it is not recommended to use this version. In addition to that Backbreeze generates a lot of classes so file size might be an issue. It is highly recommended to remove unused classes from your code base for production, you can learn more about it [here](/using-in-production/).
