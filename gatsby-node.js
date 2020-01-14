@@ -86,7 +86,7 @@ exports.createPages = ({ graphql, actions }) => {
   `).then(result => {
     result.data.allDocPage.edges.forEach(({ node }) => {
       createPage({
-        path: node.name,
+        path: `/${node.name}/,
         component: path.resolve('./src/templates/doc.js'),
         context: {
           slug: node.name,

@@ -3,39 +3,39 @@ const pkg = require('backbreeze/package.json');
 module.exports = {
   siteMetadata: {
     title: `Backbreeze CSS`,
-    description: `Backbreeze is a Tailwind CSS inspired CSS utility library written in Sass`,
+    description: `Backbreeze is a CSS utility library written in Sass`,
     author: `@n_cusan`,
     version: pkg.version,
     github: `https://github.com/nicolas-cusan/backbreeze`,
     pages: [
       {
         name: 'Installation',
-        link: '/installation',
+        link: '/installation/',
         id: 'installation',
       },
       {
         name: 'Configuration',
-        link: '/configuration',
+        link: '/configuration/',
         id: 'configuration',
       },
       {
         name: 'Mixins',
-        link: '/mixins',
+        link: '/mixins/',
         id: 'mixins',
       },
       {
         name: 'Usage',
-        link: '/usage',
+        link: '/usage/',
         id: 'usage',
       },
       {
         name: 'Recipes',
-        link: '/recipes',
+        link: '/recipes/',
         id: 'recipes',
       },
       {
         name: 'Using in production',
-        link: '/using-in-production',
+        link: '/using-in-production/',
         id: 'using-in-production',
       },
     ],
