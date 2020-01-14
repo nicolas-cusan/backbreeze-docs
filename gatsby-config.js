@@ -10,32 +10,32 @@ module.exports = {
     pages: [
       {
         name: 'Installation',
-        link: '/installation/',
+        link: '/installation',
         id: 'installation',
       },
       {
         name: 'Configuration',
-        link: '/configuration/',
+        link: '/configuration',
         id: 'configuration',
       },
       {
         name: 'Mixins',
-        link: '/mixins/',
+        link: '/mixins',
         id: 'mixins',
       },
       {
         name: 'Usage',
-        link: '/usage/',
+        link: '/usage',
         id: 'usage',
       },
       {
         name: 'Recipes',
-        link: '/recipes/',
+        link: '/recipes',
         id: 'recipes',
       },
       {
         name: 'Using in production',
-        link: '/using-in-production/',
+        link: '/using-in-production',
         id: 'using-in-production',
       },
     ],
