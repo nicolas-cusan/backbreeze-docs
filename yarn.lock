@@ -2376,9 +2376,10 @@ babylon@^6.18.0:
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
   integrity sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==
 
-"backbreeze@https://github.com/nicolas-cusan/backbreeze.git":
-  version "1.0.0"
-  resolved "https://github.com/nicolas-cusan/backbreeze.git#e5441b70876c356a80e8a09937247ec7d47d4c27"
+backbreeze@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/backbreeze/-/backbreeze-0.0.1.tgz#866a334fb8bb83b27f360c96dd7ceb7178dd9a6f"
+  integrity sha512-LMsR9QXLXzzt2sfoANxGkoD2/3lU74f4Ebf5i27v0GF2bM1PizuqNiwTx+E5kb6ae5IZI/A6RR+B9m29yy9nig==
 
 backo2@1.0.2:
   version "1.0.2"
