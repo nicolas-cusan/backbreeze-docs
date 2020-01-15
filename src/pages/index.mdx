@@ -11,11 +11,11 @@ export default ({ children }) => (
 
 ## Features
 
-- Written in [Sass](https://sass-lang.com/), configuration in Sass
-- Project specific configuration instead of lots of defaults, designed to build project specific style systems
-- Can be dropped in to existing Sass projects
+- Written in [Sass](https://sass-lang.com/), configured in Sass
+- Project specific configuration instead of lots of defaults
+- Can be dropped into existing Sass projects
 - Responsive and mobile first
-- Short class names derived from the CSS property they apply to make _guessing_ class names easy
+- CSS property derived class names to make class name _guessing_ easy
 
 ## What are utility classes?
 
@@ -35,12 +35,14 @@ Styling is achieved by combining multiple classes in HTML rather then writing, a
 </div>
 ```
 
-Backbreeze provides classes for a lot of CSS properties in the spec. So that a lot can be achieved by combining classes. Some benefits of this approach are:
+Backbreeze provides classes for most CSS properties in the spec. A lot can be achieved by combining classes.
+
+Benefits of this approach are:
 
 - Fast development
 - Small CSS files (when [processed correctly](/using-in-production/#remove-unused-css-with-purgecss))
 - No need to worry about naming things
-- Flexibility to make exceptions / variations of componets any time
+- Flexibility to make exceptions / variations of components any time
 
 ## Why Sass?
 
