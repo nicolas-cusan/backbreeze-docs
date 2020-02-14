@@ -13,7 +13,7 @@ import 'scss/main.scss';
 const Layout = ({ children }) => (
   <div className="minh-full d-flx flxd-col">
     <main className="pl-220@sm pl-320@md pt-60">
-      <div className="px-x.5 py-x2 mx-auto maxw-700">{children}</div>
+      <div className="px-x.5 py-x2 mx-auto maxw-756">{children}</div>
     </main>
     <footer>
       © {new Date().getFullYear()}, Built with
