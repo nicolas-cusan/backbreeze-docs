@@ -37,7 +37,7 @@ You can use it to create your own utility classes:
       'pulse': pulse,
       'none': none,
     ),
-    'bps': $bb-bps // <- Use the general breakpoints,
+    'bps': $bb-bps // <- Use the general breakpoints,,,
   )
 );
 ```
@@ -61,3 +61,48 @@ Will yield
 ```
 
 ## `$bb-mq`
+
+The `$bb-mq` mixin is a convinience to allow you to reference the breakpoints defined in the [global `$bb-mqs` variable](/configuration/#bb-bps) by name.
+
+```scss
+// _config.scss
+
+$bb-mqs: (
+  'sm': 400px,
+  'lg': 900px,
+);
+
+// _my-custom-module.scss
+
+.my-module {
+  color: red;
+
+  @include bb-mq('sm') {
+    color: purple;
+  }
+
+  @include bb-mq('lg') {
+    color: green;
+  }
+}
+```
+
+Will yield:
+
+```css
+.my-module {
+  color: red;
+}
+
+@media all and (min-width: 400px) {
+  .my-module {
+    color: purple;
+  }
+}
+
+@media all and (min-width: 900px) {
+  .my-module {
+    color: green;
+  }
+}
+```

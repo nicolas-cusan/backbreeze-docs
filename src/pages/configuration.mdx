@@ -98,12 +98,28 @@ $bb-bps: (
 
 ### `$bb-spacing`
 
-Defines spacing. Used in: `padding`, `margin`, `width`, `max-width`, `min-width`, `height`, `max-width`, `min-width`, `top`, `left`, `right`, `bottom`, `column-gap`, `flex-basis`.
+Defines spacing. Used in: `padding`, `margin`, `top`, `left`, `right`, `bottom`.
 
-Default value;
+Default value:
 
 ```scss
 $bb-spacing: (
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  '': 26px,
+) !default;
+```
+
+### `$bb-sizes`
+
+Defines sizes. Used in: `width`, `max-width`, `min-width`, `height`, `max-height`, `min-height`, `flex-basis`.
+
+Default value:
+
+```scss
+$bb-sizes: (
   '1': 1px,
   '2': 2px,
   '3': 3px,
@@ -282,6 +298,7 @@ Optional keys:
 
 - `'bps'`: `<Map>` If set this will generate a responsive utility classes. Typically this will be set to `$bb-bps`
 - `'pseudo'`: `<Map>` If set this will generate pseudo selector utility classes. Typically this will be set to `$bb-pseudo`
+- `'important'`: `<Boolean>` If set the properties will be made `!important`
 
 ## Internal variables
 
@@ -370,6 +387,9 @@ $bb-bps: (/* ... */);
 
 // Spacing
 $bb-spacing: (/* ... */);
+
+// Sizes
+$bb-sizes: (/* ... */);
 
 // Colors
 $bb-colors: (/* ... */);
