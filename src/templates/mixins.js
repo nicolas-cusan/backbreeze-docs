@@ -6,15 +6,14 @@ import Layout from 'components/layout';
 import SEO from 'components/seo';
 import Code from 'components/Code';
 
-const DocPage = ({ data }) => {
-  const content = data.allDocPage.edges[0].node;
+const MixinsPage = ({ data }) => {
+  const content = data.allMixinsPage.edges[0].node;
 
   return (
     <Layout>
       <SEO title={content.name} />
       <h1 className="fs-34 lh-1.2 fw-bold">{content.name}</h1>
       <p className="fs-22 lh-1.3 o-0.5 pt-x.25">{content.group}</p>
-
       <hr className="my-x1.5 o-0.1" />
 
       {content.data && (
@@ -22,9 +21,13 @@ const DocPage = ({ data }) => {
           {content.data.map((item, idx) => (
             <Fragment key={`item-${idx}`}>
               <MDXRenderer>{item.mdx}</MDXRenderer>
-              <Code className="language-scss">
-                {`$${item.context.name}: ${item.context.value};`}
-              </Code>
+              {item.example &&
+                item.example.map((exp, i) => (
+                  <Fragment key={`exp-${i}`}>
+                    {exp.description && <h4>{exp.description}</h4>}
+                    <Code className={`language-${exp.type}`}>{exp.code}</Code>
+                  </Fragment>
+                ))}
             </Fragment>
           ))}
         </div>
@@ -35,12 +38,22 @@ const DocPage = ({ data }) => {
 
 export const query = graphql`
   query($slug: String!) {
-    allDocPage(filter: { name: { eq: $slug } }) {
+    allMixinsPage(filter: { name: { eq: $slug } }) {
       edges {
         node {
           name
           data {
             mdx
+            example {
+              type
+              code
+              description
+            }
+            parameter {
+              type
+              name
+              description
+            }
             file {
               name
               path
@@ -48,7 +61,7 @@ export const query = graphql`
             context {
               name
               type
-              value
+              code
             }
           }
           group
@@ -58,4 +71,4 @@ export const query = graphql`
   }
 `;
 
-export default DocPage;
+export default MixinsPage;

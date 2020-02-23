@@ -144,7 +144,7 @@ $bb-colors: (
 
 ## Property-driven variables
 
-Each CSS property class has two configuration variables, one that holds the property's **values**, and one that holds **configuration** for that property (e.g. name, breakpoints, pseudo states), both variables are Sass maps.
+Each CSS property class has two configuration variables, one that holds the property's [**values**](#values), and one that holds [**configuration**](#configuration) for that property (e.g. name, breakpoints, pseudo states), both variables are Sass maps.
 
 All variables have the same pattern:
 
@@ -299,6 +299,17 @@ Optional keys:
 - `'bps'`: `<Map>` If set this will generate a responsive utility classes. Typically this will be set to `$bb-bps`
 - `'pseudo'`: `<Map>` If set this will generate pseudo selector utility classes. Typically this will be set to `$bb-pseudo`
 - `'important'`: `<Boolean>` If set the properties will be made `!important`
+
+Example:
+
+```scss
+$bb-text-align-config: (
+  'name': 'ta',
+  'prop': 'text-align',
+  'values': $bb-text-align-values,
+  'bps': $bb-mqs,
+);
+```
 
 ## Internal variables
 

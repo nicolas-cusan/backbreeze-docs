@@ -30,7 +30,7 @@ export default ({ openMenu, setOpenMenu }) => {
               }
             }
           }
-          allDocPage {
+          allPropPage {
             edges {
               node {
                 id
@@ -46,7 +46,7 @@ export default ({ openMenu, setOpenMenu }) => {
           site: {
             siteMetadata: { pages },
           },
-          allDocPage: { edges: docs },
+          allPropPage: { edges: docs },
         } = data;
 
         docs = docs

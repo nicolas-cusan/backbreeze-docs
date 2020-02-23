@@ -1,6 +1,6 @@
-const sassdoc = require('sassdoc');
 const path = require('path');
-const genMdx = require('./gen-mdx');
+const generatePropsData = require('./scripts/generate-props-data.js');
+const generateMixinsData = require('./scripts/generate-mixins-data.js');
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
@@ -18,80 +18,57 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions;
 
-  const docsData = await sassdoc
-    .parse('./node_modules/backbreeze/src/props', { verbose: true })
-    .then(data => {
-      const newData = data.reduce((acc, item) => {
-        const name = item.file.name;
-
-        if (name in acc) {
-          acc[name].push(item);
-        } else {
-          acc[name] = [];
-          acc[name].push(item);
-        }
-
-        return acc;
-      }, {});
-      return newData;
-    });
-
-  Object.keys(docsData).forEach(key => {
-    const data = docsData[key];
-    const fileName = key.replace(/_/, '').replace('.scss', '');
-    data.forEach(item => {
-      item.mdx = genMdx(item.description.trim());
-    });
-
-    const node = {
-      id: createNodeId(`doc-${fileName}`),
-      name: fileName,
-      group: data[0].group[0],
-      data,
-      internal: {
-        type: `DocPage`,
-        contentDigest: createContentDigest(data),
-      },
-    };
-
-    createNode(node);
-  });
+  return Promise.all([
+    generatePropsData(createNode, createNodeId, createContentDigest),
+    generateMixinsData(createNode, createNodeId, createContentDigest),
+  ]);
 };
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
-  return graphql(`
+  const props = graphql(`
     {
-      allDocPage(sort: { fields: [name] }) {
+      allPropPage(sort: { fields: [name] }) {
         edges {
           node {
             name
-            data {
-              description
-              file {
-                name
-                path
-              }
-              context {
-                name
-                type
-                value
-              }
-            }
-            group
           }
         }
       }
     }
   `).then(result => {
-    result.data.allDocPage.edges.forEach(({ node }) => {
+    result.data.allPropPage.edges.forEach(({ node }) => {
       createPage({
         path: `/${node.name}/`,
-        component: path.resolve('./src/templates/doc.js'),
+        component: path.resolve('./src/templates/prop.js'),
         context: {
           slug: node.name,
         },
       });
     });
   });
+
+  const mixins = graphql(`
+    {
+      allMixinsPage(sort: { fields: [name] }) {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allMixinsPage.edges.forEach(({ node }) => {
+      createPage({
+        path: `/${node.name}/`,
+        component: path.resolve('./src/templates/mixins.js'),
+        context: {
+          slug: node.name,
+        },
+      });
+    });
+  });
+
+  return Promise.all([props, mixins]);
 };
