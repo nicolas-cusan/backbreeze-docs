@@ -2,7 +2,7 @@
   "name": "backbreeze-docs",
   "private": true,
   "description": "Docs for the Backbreeze Sass utility library",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Nicolas Cusan <n.cusan@gmail.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.7",
