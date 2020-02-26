@@ -29,6 +29,7 @@ module.exports = function generatePropsData(
         newData[key].forEach((item, idx) => {
           data[idx] = {
             mdx: genMdx(item.description.trim()),
+            description: item.description.trim(),
             file: item.file,
             context: item.context,
             group: item.group,

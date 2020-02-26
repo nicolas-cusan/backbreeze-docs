@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+// import { MDXProvider } from '@mdx-js/react';
+// import components from 'utils/mdx-components';
 
 import Layout from 'components/layout';
 import SEO from 'components/seo';
@@ -19,14 +21,18 @@ const PropPage = ({ data }) => {
 
       {content.data && (
         <div className="typography">
-          {content.data.map((item, idx) => (
-            <Fragment key={`item-${idx}`}>
-              <MDXRenderer>{item.mdx}</MDXRenderer>
-              <Code className="language-scss">
-                {`$${item.context.name}: ${item.context.value};`}
-              </Code>
-            </Fragment>
-          ))}
+          {content.data.map((item, idx) => {
+            console.log(item);
+            return (
+              <Fragment key={`item-${idx}`}>
+                <MDXRenderer>{item.mdx}</MDXRenderer>
+
+                <Code className="language-scss">
+                  {`$${item.context.name}: ${item.context.value};`}
+                </Code>
+              </Fragment>
+            );
+          })}
         </div>
       )}
     </Layout>
@@ -40,6 +46,7 @@ export const query = graphql`
         node {
           name
           data {
+            description
             mdx
             file {
               name
