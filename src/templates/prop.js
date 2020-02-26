@@ -22,7 +22,6 @@ const PropPage = ({ data }) => {
       {content.data && (
         <div className="typography">
           {content.data.map((item, idx) => {
-            console.log(item);
             return (
               <Fragment key={`item-${idx}`}>
                 <MDXRenderer>{item.mdx}</MDXRenderer>
