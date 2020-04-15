@@ -23,10 +23,8 @@ When using PurgeCSS it is important to configure the `extractors` option properl
 // In your PurgeCSS configuration
 extractors: [
   {
-    extractor: class {
-      static extract(content) {
-        return content.match(/[\w-/:%@.]+(?<!:)/g) || [];
-      }
+    extractor: (content) => {
+      return content.match(/[\w-/:%@.]+(?<!:)/g) || [];
     },
     extensions: ['.html', '.js'], // all file the extensions the extractor should be applied to
   },
