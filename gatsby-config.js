@@ -54,10 +54,8 @@ module.exports = {
         whitelistPatternsChildren: [/typography$/],
         extractors: [
           {
-            extractor: class {
-              static extract(content) {
-                return content.match(/[\w-/:%@.]+(?<!:)/g) || [];
-              }
+            extractor: (content) => {
+              return content.match(/[\w-/:%@.]+(?<!:)/g) || [];
             },
             extensions: ['js', 'ts', 'jsx', 'tsx', 'md', 'mdx'],
           },
