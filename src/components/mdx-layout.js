@@ -5,7 +5,7 @@ import { MDXProvider } from '@mdx-js/react';
 import components from 'utils/mdx-components';
 
 export default ({ title, subline, children }) => {
-  console.log(children);
+  // console.log(children);
   return (
     <Layout>
       <SEO title={title} />
