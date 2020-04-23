@@ -12,8 +12,7 @@ $space: 26px;
 
 $fs: 16px;
 $lh: ($space / $fs);
-$ff: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-  Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$ff: 'Rubik', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 $ff-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 
 // Colors
@@ -22,13 +21,27 @@ $ff-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 $primary: #006cd6;
 $accent: #f8c326;
 $accent-light: rgba($accent, 0.12);
-$accent-dark: #a07e18;
 $gray-powder: #fafafa;
 $gray-dust: #f2f2f2;
 $color-txt: #282c34;
 
 // BB Configuration
 // ============================================
+
+$bb-colors: (
+  'inherit': inherit,
+  'current': currentColor,
+  'transparent': transparent,
+  'white': #fff,
+  'black': #000,
+  'txt': $color-txt,
+  'powder': $gray-powder,
+  'dust': $gray-dust,
+  'primary': $primary,
+  'primaryLight': #0086f4,
+  'accent': $accent,
+  'accentLight': $accent-light,
+);
 
 $bb-spacing: (
   '0': 0,
@@ -44,35 +57,44 @@ $bb-spacing: (
   'x1.5': $space + $space * 0.5,
   'x1.75': $space + $space * 0.75,
   'x2': $space * 2,
+  'x3': $space * 3,
   '100%': 100%,
   'full': calc(100vh - 40px),
+  '100vh': 100vh,
+  '100vw': 100vw,
   '13': 13px,
   '18': 18px,
   '26': 26px,
   '30': 30px,
   '50': 50px,
   '60': 60px,
+  '120': 120px,
   '220': 220px,
   '320': 320px,
+  '360': 360px,
+  '500': 500px,
+  '610': 610px,
   '700': 700px,
-  '756': 756px,
+  '800': 800px,
+);
+
+$bb-bps: (
+  'xs': 416px,
+  'sm': 756px,
+  'md': 1024px,
+  'lg': 1220px,
+  'xl': 1460px,
+  'xxl': 1760px,
 );
 
 $bb-sizes: $bb-spacing;
 
-$bb-colors: (
-  'inherit': inherit,
-  'current': currentColor,
-  'transparent': transparent,
-  'white': #fff,
-  'black': #000,
-  'txt': $color-txt,
-  'powder': $gray-powder,
-  'dust': $gray-dust,
-  'primary': $primary,
-  'accent': $accent,
-  'accentLight': $accent-light,
-  'accentDark': $accent-dark,
+$bb-width-values: map-merge(
+  $bb-sizes,
+  (
+    'auto': auto,
+    'sidebar': calc(50vw + 320px - 610px),
+  )
 );
 
 $bb-border-width-values: (
@@ -86,8 +108,13 @@ $bb-border-width-values: (
 $bb-font-size-values: (
   '34': 34px,
   '22': 22px,
+  '18': 18px,
   '14': 14px,
   '': $fs,
+);
+
+$bb-letter-spacing-values: (
+  '-sm': -0.01em,
 );
 
 $bb-font-family-values: (
@@ -136,3 +163,24 @@ $bb-box-shadow-values: (
     0 2px 8px rgba(0, 0, 0, 0.06),
   ),
 );
+
+$bb-transition-duration-values: (
+  '100': 100ms,
+  '200': 200ms,
+  '300': 300ms,
+);
+
+$bb-transition-property-values: (
+  'colors': (
+    color,
+    background-color,
+    border-color,
+    border-bottom-color,
+    fill,
+    stroke,
+  ),
+  ot: (
+    opacity,
+    transform,
+  ),
+) !default;

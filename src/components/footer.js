@@ -1,0 +1,31 @@
+import React from 'react';
+
+export default function Footer({ isHome }) {
+  return (
+    <footer
+      className={`fs-14 flx-none bt-1 bt-solid bt-dust ${
+        !isHome ? 'pl-220@sm pl-320@md' : ''
+      }`}
+    >
+      <div className="px-x.5 ta-center py-x1 o-0.5">
+        © {new Date().getFullYear()}, Backbreeze CSS is built by
+        {` `}
+        <a className="td-under" href="https://twitter.com/n_cusan">
+          Nicolas Cusan
+        </a>
+        {` `}
+        from
+        {` `}
+        <a className="td-under" href="https://arillo.ch">
+          Arillo
+        </a>
+        .{` `}
+        These docs are build with
+        {` `}
+        <a className="td-under" href="https://www.gatsbyjs.org">
+          Gatsby
+        </a>
+      </div>
+    </footer>
+  );
+}

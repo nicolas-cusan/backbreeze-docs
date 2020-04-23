@@ -10,34 +10,31 @@ import PropTypes from 'prop-types';
 import 'destyle.css';
 import 'scss/main.scss';
 
-const Layout = ({ children }) => (
-  <div className="minh-full d-flx flxd-col">
-    <main className="pl-220@sm pl-320@md pt-60">
-      <div className="px-x.5 py-x2 mx-auto maxw-756">{children}</div>
-    </main>
-    <footer className="pl-220@sm pl-320@md fs-14 bt-1 bt-solid bt-dust">
-      <div className="px-x.5 ta-center py-x1 o-0.5">
-        © {new Date().getFullYear()}, Built by
-        {` `}
-        <a className="td-under" href="https://twitter.com/n_cusan">
-          Nicolas Cusan
-        </a>
-        {` `}
-        from
-        {` `}
-        <a className="td-under" href="https://arillo.ch">
-          Arillo
-        </a>
-        {` `}
-        with
-        {` `}
-        <a className="td-under" href="https://www.gatsbyjs.org">
-          Gatsby
-        </a>
+import Footer from './footer';
+
+const Layout = ({ children, isHome }) => {
+  if (isHome) {
+    return (
+      <div className="minh-100vh d-flx flxd-col">
+        <main className="flx-auto">
+          <div className="px-x.5 py-x2 mx-auto maxw-800 px-x1@sm">
+            {children}
+          </div>
+        </main>
+        <Footer isHome={true} />
       </div>
-    </footer>
-  </div>
-);
+    );
+  }
+
+  return (
+    <div className="minh-100vh d-flx flxd-col">
+      <main className="pr-220@sm pr-320@md pr-0@xxl pt-60 flx-auto">
+        <div className="px-x.5 py-x2 mx-auto maxw-800 px-x1@sm">{children}</div>
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

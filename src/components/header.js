@@ -17,7 +17,7 @@ const Header = ({ siteTitle, version, github, setOpenMenu }) => (
       </Link>
     </div>
     <div className="o-0.6 mr-x1 fs-14 fw-500">{version}</div>
-    <a className="o-0.5:hover ts-opacity ts-200" href={github}>
+    <a className="o-0.5:hover ts-o ts-200" href={github}>
       <Github className="fl-white d-blk" />
     </a>
   </header>
