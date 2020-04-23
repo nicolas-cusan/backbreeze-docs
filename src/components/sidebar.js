@@ -78,7 +78,7 @@ export default ({ openMenu, setOpenMenu }) => {
           <Fragment>
             <nav
               className={`
-                ts-300 ts-ot z-100 z-auto@sm pos-fxd top-60 rgt-0 btm-0 w-100% w-220@sm w-320@md pt-x.75 pb-x2 of-scroll z-6 bg-powder bl-1@sm bl-dust@sm bl-solid@sm pointer-auto@sm o-1@sm tf-y-0@sm w-sidebar@lg w-320@xxl
+                ts-300 ts-ot z-100 z-auto@sm pos-fxd top-60 rgt-0 btm-0 w-100% w-220@sm w-320@md pt-x.75 pb-x2 of-scroll z-6 bg-powder bl-1@sm bl-dust@sm bl-solid@sm pointer-auto@sm o-1@sm tf-y-0@sm w-sidebar@lg w-440@xxl
                 ${
                   openMenu
                     ? 'pointer-auto o-1 tf-y-0'
