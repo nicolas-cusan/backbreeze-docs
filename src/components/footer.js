@@ -4,7 +4,7 @@ export default function Footer({ isHome }) {
   return (
     <footer
       className={`fs-14 flx-none bt-1 bt-solid bt-dust ${
-        !isHome ? 'pl-220@sm pl-320@md' : ''
+        !isHome ? 'pr-220@sm pr-320@md pr-0@xxl' : ''
       }`}
     >
       <div className="px-x.5 ta-center py-x1 o-0.5">
