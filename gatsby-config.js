@@ -3,6 +3,7 @@ const pkg = require('backbreeze/package.json');
 module.exports = {
   siteMetadata: {
     title: `Backbreeze CSS`,
+    siteUrl: `http://backbreezecss.com`,
     description: `Backbreeze is a CSS utility library written in Sass`,
     author: `@n_cusan`,
     version: pkg.version,
@@ -41,6 +42,7 @@ module.exports = {
     ],
   },
   plugins: [
+    \`gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
