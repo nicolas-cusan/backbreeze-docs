@@ -8,7 +8,7 @@ export default function Footer({ isHome }) {
       }`}
     >
       <div className="px-x.5 ta-center py-x1 o-0.5">
-        © {new Date().getFullYear()}, Backbreeze CSS is built by
+        © {new Date().getFullYear()}, Made by
         {` `}
         <a className="td-under" href="https://twitter.com/n_cusan">
           Nicolas Cusan

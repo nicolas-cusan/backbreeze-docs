@@ -13,7 +13,7 @@ export default ({ children }) => (
 
 In Sass variables can be flagged as `!default`. That means that if another variable with the same name is defined in the scope of the project the `!default` variable will be overwritten (learn more about it [here](https://sass-lang.com/documentation/variables#default-values)).
 
-Backbreeze's configuration API is based on this principle. To configure a Backbreeze you need to overwitte it by creating a variable with the same name in your project:
+Backbreeze's configuration API is based on this principle. To configure the values for a property class you need to overwrite it by creating a variable with the same name in your project:
 
 ```scss
 // project config
@@ -32,7 +32,7 @@ $bb-colors: (
 ```
 
 ```scss
-// bacbreeze config default
+// backbreeze config default
 
 // Default value
 
@@ -47,114 +47,23 @@ Due to the way default variables work in Sass you need to overwrite any Backbree
 
 Backbreeze configuration variables are categorized in:
 
-- **[General](#general-variables)**
 - **[Property-driven](#property-driven-variables)**
+- **[General](#general-variables)**
 - **[Internal](#internal-variables)**
-
-## General variables
-
-General variables are used to define values for multiple properties. It is recommended to customize these for every project.
-
-### `$bb-namespace`
-
-Type `<String>`. Namespace generated class names, it defaults to an empty string, that means classes are not namespaced by default. In case you want to use Backbreeze with another library or just want to make clear what classes are utility classes you can set a namespace to prevent naming collisions.
-
-**Default value**
-
-```scss
-$bb-namespace: '' !default;
-```
-
-Example:
-
-```scss
-$bb-namespace: 'bb';
-```
-
-```diff
-- .ta-center {
-+ .bb-ta-center {
-    text-align: center;
-  }
-```
-
-Example: setting `$bb-namespace: 'bb-';` will make all classes look like this: `.bb-<REST OF THE CLASS>` (`.-bb-<REST OF THE CLASS>`) for negative classes.
-
-### `$bb-bps`
-
-Map of breakpoints. The keys will be used in the responsive class names. Used in: all classes that are responsive.
-
-Default value:
-
-```scss
-$bb-bps: (
-  'xs': 416px,
-  'sm': 756px,
-  'md': 1024px,
-  'lg': 1220px,
-  'xl': 1460px,
-) !default;
-```
-
-### `$bb-spacing`
-
-Defines spacing. Used in: `padding`, `margin`, `top`, `left`, `right`, `bottom`.
-
-Default value:
-
-```scss
-$bb-spacing: (
-  '1': 1px,
-  '2': 2px,
-  '3': 3px,
-  '4': 4px,
-  '': 26px,
-) !default;
-```
-
-### `$bb-sizes`
-
-Defines sizes. Used in: `width`, `max-width`, `min-width`, `height`, `max-height`, `min-height`, `flex-basis`.
-
-Default value:
-
-```scss
-$bb-sizes: (
-  '1': 1px,
-  '2': 2px,
-  '3': 3px,
-  '4': 4px,
-  '': 26px,
-) !default;
-```
-
-### `$bb-colors`
-
-Defines colors. Used in: `background-color`, `border-color`, `color`, `outline-color`, `fill`, `stroke`
-
-Default value:
-
-```scss
-$bb-colors: (
-  'white': #fff,
-  'black': #000,
-  'current': currentColor,
-) !default;
-```
 
 ## Property-driven variables
 
-Each CSS property class has two configuration variables, one that holds the property's [**values**](#values), and one that holds [**configuration**](#configuration) for that property (e.g. name, breakpoints, pseudo states), both variables are Sass maps.
+Each CSS property class has two configuration variables, one that holds the property's [values](#values), and one that holds [configuration](#configuration) for that property (e.g. name, breakpoints, pseudo states), both variables are Sass maps.
 
 All variables have the same pattern:
 
 <!-- prettier-ignore-start -->
 ```scss
-$bb-<PROPERTYNAME>-values: (
+$bb-<PROPERTY_NAME>-values: (
   /* values */
 );
 
-$bb-<PROPERTYNAME>-config: (
+$bb-<PROPERTY_NAME>-config: (
   /* configuration */
 );
 ```
@@ -247,7 +156,7 @@ $bb-line-height-values: (
 ```
 <!-- prettier-ignore-end -->
 
-#### NOTE Negative values
+#### NOTE: Negative values
 
 Negative values are generated automatically for CSS properties to whom it is useful by default. These properties are defined in the internal variable [`$bb-negative-properties`](#bb-negative-properties). Adding a positive value will also generate a negative counterpart:
 
@@ -278,7 +187,7 @@ $bb-transform-values: (
 );
 ```
 
-Will yield
+Will yield:
 
 ```css
 .-tf-50\% {
@@ -290,15 +199,19 @@ Will yield
 
 The configuration map has three mandatory keys:
 
-- `'name'`: `<String>` Defines the generated class name
-- `'prop'`: `<String>` CSS property used
-- `'values'`: `<Map>` Values used, **this should be the corresponding values variable**
+| Key name   | Type       | Description                                                       |
+| ---------- | ---------- | ----------------------------------------------------------------- |
+| `'name'`   | `<String>` | Defines the generated class name                                  |
+| `'prop'`   | `<String>` | CSS property used                                                 |
+| `'values'` | `<Map>`    | Values used, **this should be the corresponding values variable** |
 
 Optional keys:
 
-- `'bps'`: `<Map>` If set this will generate a responsive utility classes. Typically this will be set to `$bb-bps`
-- `'pseudo'`: `<Map>` If set this will generate pseudo selector utility classes. Typically this will be set to `$bb-pseudo`
-- `'important'`: `<Boolean>` If set the properties will be made `!important`
+| Key name      | Type        | Description                                                                                                         |
+| ------------- | ----------- | ------------------------------------------------------------------------------------------------------------------- |
+| `'bps'`       | `<Map>`     | If set this will generate a responsive utility classes. Typically this will be set to [`$bb-bps`](#bb-bps)          |
+| `'pseudo'`    | `<Map>`     | If set this will generate pseudo selector utility classes. Typically this will be set to [`$bb-pseudo`](#bb-pseudo) |
+| `'important'` | `<Boolean>` | If set the properties will be made `!important`                                                                     |
 
 Example:
 
@@ -309,6 +222,97 @@ $bb-text-align-config: (
   'values': $bb-text-align-values,
   'bps': $bb-mqs,
 );
+```
+
+## General variables
+
+General variables are used to define values for multiple properties. It is recommended to customize these for every project.
+
+### `$bb-namespace`
+
+Type `<String>`. Namespace generated class names, it defaults to an empty string, that means classes are not namespaced by default. In case you want to use Backbreeze with another library or just want to make clear what classes are utility classes you can set a namespace to prevent naming collisions.
+
+Default value:
+
+```scss
+$bb-namespace: '' !default;
+```
+
+Example:
+
+```scss
+$bb-namespace: 'bb';
+```
+
+```diff
+- .ta-center {
++ .bb-ta-center {
+    text-align: center;
+  }
+```
+
+Setting `$bb-namespace: 'bb-';` will make all classes look like this: `.bb-<REST OF THE CLASS>` (`.-bb-<REST OF THE CLASS>`) for negative classes.
+
+### `$bb-bps`
+
+Type `<Map>`, the keys will be used in the responsive class names. Used in: all classes that are responsive.
+
+Default value:
+
+```scss
+$bb-bps: (
+  'xs': 416px,
+  'sm': 756px,
+  'md': 1024px,
+  'lg': 1220px,
+  'xl': 1460px,
+) !default;
+```
+
+### `$bb-spacing`
+
+Defines spacing. Used in: `padding`, `margin`, `top`, `left`, `right`, `bottom`.
+
+Default value:
+
+```scss
+$bb-spacing: (
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  '': 26px,
+) !default;
+```
+
+### `$bb-sizes`
+
+Defines sizes. Used in: `width`, `max-width`, `min-width`, `height`, `max-height`, `min-height`, `flex-basis`.
+
+Default value:
+
+```scss
+$bb-sizes: (
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  '': 26px,
+) !default;
+```
+
+### `$bb-colors`
+
+Defines colors. Used in: `background-color`, `border-color`, `color`, `outline-color`, `fill`, `stroke`
+
+Default value:
+
+```scss
+$bb-colors: (
+  'white': #fff,
+  'black': #000,
+  'current': currentColor,
+) !default;
 ```
 
 ## Internal variables

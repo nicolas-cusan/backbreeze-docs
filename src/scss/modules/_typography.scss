@@ -24,6 +24,16 @@
   }
 }
 
+// Bold
+// ============================================
+
+.typography {
+  b,
+  strong {
+    font-weight: 500;
+  }
+}
+
 // Code
 // ============================================
 
@@ -230,6 +240,40 @@
       background-color: currentColor;
       content: '';
       border-radius: 99px;
+    }
+  }
+}
+
+// Table
+// ============================================
+
+.typography {
+  table {
+    th {
+      font-weight: 500;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      border-top: 1px solid #eee;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    thead tr:first-child th {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    tbody tr:last-child th {
+      padding-bottom: 0;
     }
   }
 }
