@@ -11,6 +11,7 @@
   p,
   address,
   table,
+  .table,
   ul,
   ol,
   pre,
@@ -78,6 +79,7 @@
 
     code {
       line-height: inherit;
+      font-weight: bold;
     }
 
     &::before {
