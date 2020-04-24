@@ -20,7 +20,7 @@ export default function Footer({ isHome }) {
           Arillo
         </a>
         .{` `}
-        These docs are build with
+        These docs are built with
         {` `}
         <a className="td-under" href="https://www.gatsbyjs.org">
           Gatsby

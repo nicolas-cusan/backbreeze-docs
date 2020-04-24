@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from 'images/logo.svg';
 
 export default ({ siteTitle, version, github, setOpenMenu }) => (
   <header className="bg-txt c-white ta-center pb-x.75 mb-x.5">
-    <div className="px-x.5 py-x2@ py-x3@sm mx-auto maxw-800 px-x1@sm">
+    <div className="px-x.5 py-x2 py-x3@sm mx-auto maxw-800 px-x1@sm">
       <Logo className="fl-white w-120 h-120 d-blk mx-auto" />
       <h1 className="fw-500 -mt-x.5 fs-34">{siteTitle}</h1>
 
