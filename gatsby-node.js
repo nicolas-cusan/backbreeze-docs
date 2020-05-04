@@ -17,7 +17,15 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions;
 
-  return generatePropsData(createNode, createNodeId, createContentDigest);
+  const data = await generatePropsData(
+    createNode,
+    createNodeId,
+    createContentDigest
+  );
+
+  console.log(data);
+
+  return data;
 };
 
 exports.createPages = ({ graphql, actions }) => {
@@ -32,17 +40,19 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `).then(result => {
-    result.data.allPropPage.edges.forEach(({ node }) => {
-      createPage({
-        path: `/${node.name}/`,
-        component: path.resolve('./src/templates/prop.js'),
-        context: {
-          slug: node.name,
-        },
+  `)
+    .then((result) => {
+      result.data.allPropPage.edges.forEach(({ node }) => {
+        createPage({
+          path: `/${node.name}/`,
+          component: path.resolve('./src/templates/prop.js'),
+          context: {
+            slug: node.name,
+          },
+        });
       });
-    });
-  });
+    })
+    .catch((err) => console.log(err));
 
   return Promise.all([props]);
 };

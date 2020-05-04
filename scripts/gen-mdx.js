@@ -27,7 +27,7 @@ module.exports = function genMdx(input) {
         {
           useBuiltIns: `entry`,
           corejs: 2,
-          modules: `false`,
+          modules: false,
         },
       ],
     ],

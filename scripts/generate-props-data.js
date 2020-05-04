@@ -8,7 +8,7 @@ module.exports = function generatePropsData(
 ) {
   return sassdoc
     .parse('./node_modules/backbreeze/src/props', { verbose: true })
-    .then(data => {
+    .then((data) => {
       const newData = data.reduce((acc, item) => {
         const name = item.file.name;
 
@@ -22,7 +22,7 @@ module.exports = function generatePropsData(
         return acc;
       }, {});
 
-      Object.keys(newData).forEach(key => {
+      Object.keys(newData).forEach((key) => {
         const fileName = key.replace(/_/, '').replace('.scss', '');
         const data = [];
 
@@ -51,7 +51,7 @@ module.exports = function generatePropsData(
         createNode(node);
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };

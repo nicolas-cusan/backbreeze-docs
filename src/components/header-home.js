@@ -12,18 +12,18 @@ export default ({ siteTitle, version, github, setOpenMenu }) => (
         A highly configurable utility class library written in Sass.
       </p>
 
-      <div className="pt-4 d-flx jfy-center ai-center">
+      <div className="pt-4 d-flx flxw-wrap jfy-center ai-center">
         <Link
-          className="bg-white px-x.5 -ls-sm fw-500 minw-120 py-x.25 b-2 b-solid b-white mx-x.25 rad-4 c-txt ts-colors ts-200 bg-primaryLight:hover b-primaryLight:hover c-white:hover"
+          className="bg-white px-x.5 -ls-sm fw-500 minw-120 py-x.25 b-2 b-solid b-white m-x.25 rad-4 c-txt ts-colors ts-200 bg-primaryLight:hover b-primaryLight:hover c-white:hover"
           to="/installation/"
         >
-          Get Started
+          Read the documentation
         </Link>
         <a
-          className="px-x.5 fw-500 -ls-sm py-x.25 minw-120 b-2 b-solid b-white mx-x.25 rad-4 ts-colors ts-200 c-primaryLight:hover b-primaryLight:hover"
+          className="px-x.5 fw-500 -ls-sm py-x.25 minw-120 b-2 b-solid b-white m-x.25 rad-4 ts-colors ts-200 c-primaryLight:hover b-primaryLight:hover"
           href={github}
         >
-          Github
+          View on Github
         </a>
       </div>
     </div>
