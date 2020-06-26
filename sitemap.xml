@@ -89,8 +89,8 @@
 <url> <loc>http://backbreezecss.com/configuration/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://backbreezecss.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://backbreezecss.com/installation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://backbreezecss.com/recipes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://backbreezecss.com/mixins/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://backbreezecss.com/recipes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://backbreezecss.com/usage/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://backbreezecss.com/using-in-production/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
