@@ -13,10 +13,10 @@ const Header = ({ siteTitle, version, github, setOpenMenu }) => (
         onClick={() => setOpenMenu(false)}
       >
         <Logo className="fl-white" />
-        <span className="fw-500 pl-x.5">{siteTitle}</span>
+        <span className="fw-bold pl-x.5">{siteTitle}</span>
       </Link>
     </div>
-    <div className="o-0.6 mr-x1 fs-14 fw-500">{version}</div>
+    <div className="o-0.6 mr-x1 fs-14 fw-bold">{version}</div>
     <a className="o-0.5:hover ts-o ts-200" href={github}>
       <Github className="fl-white d-blk" />
     </a>

@@ -14,8 +14,8 @@ const PropPage = ({ data }) => {
   return (
     <Layout>
       <SEO title={content.name} />
-      <h1 className="fs-34 lh-1.2 fw-500 -ls-sm">{content.name}</h1>
-      <p className="fs-22 lh-1.3 o-0.5 pt-x.25">{content.group}</p>
+      <h1 className="fs-34 lh-1.2 fw-bold -ls-sm">{content.name}</h1>
+      <p className="fs-22 lh-1.3 o-0.5 pt-x.25 fw-500">{content.group}</p>
 
       <hr className="my-x1.5 o-0.1" />
 
